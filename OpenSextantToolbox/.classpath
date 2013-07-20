@@ -49,11 +49,10 @@
 	<classpathentry kind="lib" path="lib/apps/icu4j-charset-51_1.jar"/>
 	<classpathentry kind="lib" path="lib/apps/json-lib-2.4-jdk15.jar"/>
 	<classpathentry kind="lib" path="lib/apps/tika-app-1.3-nologger.jar"/>
-	<classpathentry kind="lib" path="lib/opensextant-commons.jar"/>
 	<classpathentry kind="lib" path="lib/apps/super-csv-2.1.0.jar"/>
-	<classpathentry kind="lib" path="lib/solr-text-tagger-1.1.jar"/>
 	<classpathentry kind="lib" path="lib/JITAR.jar"/>
 	<classpathentry kind="lib" path="lib/joda-time-2.2.jar"/>
-	<classpathentry kind="lib" path="lib/opensextant-xponents-1.7.jar" sourcepath="/Xponents/XCoord/src"/>
+	<classpathentry kind="lib" path="lib/solr-text-tagger-1.2.jar"/>
+	<classpathentry kind="lib" path="lib/commons-lang-2.6.jar"/>
 	<classpathentry kind="output" path="classes"/>
 </classpath>
