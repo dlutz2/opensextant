@@ -8,7 +8,7 @@ import java.util.ArrayList;
  *
  * @author Marc C. Ubaldino, MITRE <ubaldino at mitre dot org>
  */
-public class TaxonMatch extends org.mitre.flexpat.TextMatch {
+public class TaxonMatch extends org.mitre.opensextant.flexpat.TextMatch {
 
     private List<Taxon> taxons = null;
 

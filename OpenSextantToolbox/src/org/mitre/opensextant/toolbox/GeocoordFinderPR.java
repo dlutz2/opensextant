@@ -41,12 +41,13 @@ import gate.creole.metadata.RunTime;
 import gate.util.InvalidOffsetException;
 import java.net.URL;
 import java.util.List;
+
+import org.mitre.opensextant.flexpat.TextMatch;
 import org.mitre.opensextant.placedata.Geocoord;
-import org.mitre.flexpat.TextMatch;
 import org.mitre.opensextant.processing.Parameters;
-import org.mitre.xcoord.GeocoordMatch;
-import org.mitre.xcoord.XCoord;
-import org.mitre.xcoord.XCoordException;
+import org.mitre.opensextant.xcoord.GeocoordMatch;
+import org.mitre.opensextant.xcoord.XCoord;
+import org.mitre.opensextant.xcoord.XCoordException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -36,7 +36,8 @@ import java.util.ArrayList;
 import org.mitre.opensextant.placedata.Geocoord;
 import org.mitre.opensextant.placedata.Place;
 import org.mitre.opensextant.placedata.PlaceCandidate;
-import org.mitre.xcoord.GeocoordMatch;
+import org.mitre.opensextant.xcoord.GeocoordMatch;
+
 import com.spatial4j.core.io.GeohashUtils;
 
 /**

@@ -35,8 +35,8 @@ import org.apache.commons.io.FileUtils;
 
 import org.apache.commons.io.FilenameUtils;
 
-import org.mitre.flexpat.PatternTestCase;
-import org.mitre.flexpat.TextMatch;
+import org.mitre.opensextant.flexpat.PatternTestCase;
+import org.mitre.opensextant.flexpat.TextMatch;
 import org.mitre.opensextant.util.FileUtility;
 
 import org.slf4j.LoggerFactory;

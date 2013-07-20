@@ -117,6 +117,10 @@ The core library is contained in this jar.
         <jar destfile="${apps_jar.location}" update="false" basedir="${build.dir}" >
             <include name="org/mitre/opensextant/apps/**"/>
         </jar>
+    	
+    	
+    	
+    	
     </target>
 	
     <!-- create JavaDoc directory -->
@@ -301,9 +305,9 @@ The core library is contained in this jar.
     </target>
 	
     <!-- copy over everything to the release directory -->
-    <target name="release" depends="build, javadoc, prepare.release, copy.gate.home, copy.lib, copy.resources " />
+    <target name="release" depends="build, prepare.release, copy.gate.home, copy.lib, copy.resources " />
 
     <!-- copy over everything to the release directory adding developer/integrator content -->
-    <target name="release-dev" depends="build, javadoc, prepare.release, copy.gate.home, copy.lib, copy.resources, copy.doc, copy.scripts" />
+    <target name="release-dev" depends="build, prepare.release, copy.gate.home, copy.lib, copy.resources, copy.doc, copy.scripts" />
 		
 </project>

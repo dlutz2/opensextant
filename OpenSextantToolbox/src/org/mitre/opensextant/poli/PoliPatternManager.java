@@ -31,7 +31,8 @@ import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Map;
-import org.mitre.flexpat.*;
+
+import org.mitre.opensextant.flexpat.*;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 

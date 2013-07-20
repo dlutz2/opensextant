@@ -33,9 +33,9 @@ import gate.Document;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import org.mitre.xcoord.GeocoordMatch;
 import org.mitre.opensextant.data.Place;
 import org.mitre.opensextant.processing.*;
+import org.mitre.opensextant.xcoord.GeocoordMatch;
 
 /**
  * A formatter for JSON output. Place objects, along with naked Geocoords, are

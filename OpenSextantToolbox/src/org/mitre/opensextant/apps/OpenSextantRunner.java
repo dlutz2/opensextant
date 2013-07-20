@@ -35,12 +35,12 @@ import java.io.IOException;
 import org.mitre.opensextant.extraction.ExtractionMetrics;
 import org.mitre.opensextant.processing.*;
 import org.mitre.opensextant.processing.output.AbstractFormatter;
+import org.mitre.opensextant.xtext.ConversionListener;
+import org.mitre.opensextant.xtext.ConvertedDocument;
+import org.mitre.opensextant.xtext.XText;
 import org.slf4j.LoggerFactory;
 import org.apache.commons.io.FilenameUtils;
 
-import org.mitre.xtext.XText;
-import org.mitre.xtext.ConvertedDocument;
-import org.mitre.xtext.ConversionListener;
 
 import java.util.*;
 

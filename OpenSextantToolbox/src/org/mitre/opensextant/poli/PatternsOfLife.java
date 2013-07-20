@@ -35,9 +35,8 @@ import java.io.IOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import org.mitre.flexpat.*;
+import org.mitre.opensextant.flexpat.*;
 import org.mitre.opensextant.util.TextUtils;
-import org.mitre.flexpat.RegexPatternManager;
 
 /**
  *

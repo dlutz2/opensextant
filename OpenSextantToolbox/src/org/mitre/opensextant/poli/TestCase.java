@@ -28,8 +28,8 @@
 
 package org.mitre.opensextant.poli;
 
-import org.mitre.flexpat.PatternTestCase;
-import org.mitre.flexpat.TextMatch;
+import org.mitre.opensextant.flexpat.PatternTestCase;
+import org.mitre.opensextant.flexpat.TextMatch;
 
 /**
  *

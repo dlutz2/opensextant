@@ -44,7 +44,7 @@ import gate.util.InvalidOffsetException;
 import java.net.URL;
 import java.util.List;
 
-import org.mitre.flexpat.TextMatch;
+import org.mitre.opensextant.flexpat.TextMatch;
 import org.mitre.opensextant.poli.PatternsOfLife;
 import org.mitre.opensextant.poli.PoliException;
 import org.mitre.opensextant.poli.PoliMatch;

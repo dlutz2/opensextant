@@ -44,10 +44,10 @@ import gate.util.InvalidOffsetException;
 import java.net.URL;
 import java.util.List;
 
-import org.mitre.flexpat.TextMatch;
-import org.mitre.xtemporal.DateMatch;
-import org.mitre.xtemporal.XTempException;
-import org.mitre.xtemporal.XTemporal;
+import org.mitre.opensextant.flexpat.TextMatch;
+import org.mitre.opensextant.xtemporal.DateMatch;
+import org.mitre.opensextant.xtemporal.XTempException;
+import org.mitre.opensextant.xtemporal.XTemporal;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

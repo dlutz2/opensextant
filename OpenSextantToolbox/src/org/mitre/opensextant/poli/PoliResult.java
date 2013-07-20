@@ -26,7 +26,7 @@
  * (c) 2009-2013 The MITRE Corporation. All Rights Reserved.
 **************************************************   */
 package org.mitre.opensextant.poli;
-import org.mitre.flexpat.TextMatchResultSet;
+import org.mitre.opensextant.flexpat.TextMatchResultSet;
 
 /**
  *
