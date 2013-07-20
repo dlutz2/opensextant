@@ -9,14 +9,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.TimerTask;
 
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 import org.apache.commons.io.FileUtils;
 import org.mitre.opensextant.desktop.executor.OpenSextantWorker;
-import org.mitre.opensextant.desktop.executor.progresslisteners.ChildProgressListener;
 import org.mitre.opensextant.desktop.ui.OpenSextantMainFrameImpl;
 import org.mitre.opensextant.desktop.ui.forms.panels.RowButtonsImpl;
 import org.mitre.opensextant.desktop.ui.forms.panels.RowDurationImpl;
@@ -27,7 +25,7 @@ import org.mitre.opensextant.desktop.util.JobStatistics;
 import org.mitre.opensextant.desktop.util.UpdateTask;
 import org.mitre.opensextant.processing.Parameters;
 import org.mitre.opensextant.processing.output.AbstractFormatter;
-import org.mitre.xtext.XText;
+import org.mitre.opensextant.xtext.XText;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

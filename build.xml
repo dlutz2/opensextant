@@ -6,11 +6,10 @@
     <property file="build.properties" />
 
     <!-- all of the component homes -->
-    <property name="commons.home" location="./Commons" />
+
     <property name="gazetteer.home" location="./Gazetteer" />
     <property name="lang.home" location="./LanguageResources" />
     <property name="toolbox.home" location="./OpenSextantToolbox" />
-    <property name="xponents.home" location="./Xponents" />
     <property name="desktop.home" location="./Desktop" />
     <property name="doc.home" location="./doc" />
 
@@ -34,8 +33,6 @@
         <delete file="${release.zip.file}"/>
         
         <subant target="clean">
-            <fileset dir="${commons.home}" includes="build.xml" />
-            <fileset dir="${xponents.home}" includes="build.xml" />
             <fileset dir="${toolbox.home}" includes="build.xml" />
             <!-- fileset dir="${gazetteer.home}" includes="build.xml" /-->
             <fileset dir="${lang.home}" includes="build.xml" />
@@ -46,8 +43,6 @@
     <!--  build all of the components -->
     <target name="build" depends="">
         <subant target="build">
-            <fileset dir="${commons.home}" includes="build.xml" />
-            <fileset dir="${xponents.home}" includes="build.xml" />
             <fileset dir="${toolbox.home}" includes="build.xml" />
             <!-- fileset dir="${gazetteer.home}" includes="build.xml" /-->
             <fileset dir="${lang.home}" includes="build.xml" />

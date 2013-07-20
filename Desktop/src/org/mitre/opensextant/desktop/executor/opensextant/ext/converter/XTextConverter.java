@@ -11,9 +11,9 @@ import java.util.List;
 
 import org.mitre.opensextant.processing.OpenSextantSchema;
 import org.mitre.opensextant.processing.ProcessingException;
-import org.mitre.xtext.ConversionListener;
-import org.mitre.xtext.ConvertedDocument;
-import org.mitre.xtext.XText;
+import org.mitre.opensextant.xtext.ConversionListener;
+import org.mitre.opensextant.xtext.ConvertedDocument;
+import org.mitre.opensextant.xtext.XText;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
