@@ -46,19 +46,11 @@ The core library is contained in this jar.
         
     <property name="gaz.home" location="../Gazetteer" />
 	
-    <!-- location of the Xponents directory -->
-    <property name="xponents.home" location="../Xponents" />
-	
-    <!-- location of the XTemporal directory -->
-    <property name="commons.home" location="../Commons" />
 	
     <!-- location for the generated JAR file -->
     <property name="jar.location" location="${build.dir}/${project.name}.jar" />
     <property name="phonetics_jar.location" location="${build.dir}/opensextant-phonetics.jar" />
     <property name="apps_jar.location" location="${build.dir}/opensextant-apps.jar" />
-
-    <!-- External OpenSextant dependencies -->
-    <property name="commons_jar.location" location="${commons.home}/build/opensextant-commons.jar" />
 	
     <!-- location of the license file -->
     <property name="license.location" location="../LICENSE.txt" />
@@ -80,7 +72,7 @@ The core library is contained in this jar.
     </target>
 	
     <!-- clean up created jars  -->
-    <target name="clean" depends="javadoc.clean,cleanDependencies">
+    <target name="clean" depends="javadoc.clean">
         <delete dir="${build.dir}" />
         <delete dir="${release.dir}" />
 
@@ -88,11 +80,6 @@ The core library is contained in this jar.
         <mkdir dir="${release.dir}" />
     </target>
 	
-    <!-- remove copied dependencies -->	
-    <target name="cleanDependencies">
-        <delete file="${lib.dir}/opensextant-commons.jar" />
-        <delete file="${lib.dir}/opensextant-xponents-1.7.jar" />
-    </target>
 	
     <!-- clean up javadocs  -->
     <target name="javadoc.clean">
@@ -101,7 +88,7 @@ The core library is contained in this jar.
 	
 	
     <!-- compile the source  NOTE: dependencies should be built ahead of time by master build ../build.xml NOT by this module. -->
-    <target name="compile" depends="setup,dependencies.update">
+    <target name="compile" depends="setup">
         <javac classpathref="compile.classpath" srcdir="${src.dir}" destdir="${build.dir}" 
             debug="true" debuglevel="lines,source" source="${java_level}" encoding="utf-8" />
     </target>
@@ -151,10 +138,7 @@ The core library is contained in this jar.
     <!--  Latest Dependency issues have been minimized to copy available builds;   
           Actual builds are done by ../build.xml master
       -->
-    <target name="dependencies.update">
-        <copy todir="${lib.dir}" file="${commons_jar.location}" />
-        <copy todir="${lib.dir}" file="${xponents.home}/opensextant-xponents-1.7.jar" />
-    </target>
+
 
     <!-- Build the jars and jar dependencies. Note that the FlexPat build should precede the XCoord and Xtemporal builds -->
     <target name="build" depends="jar"/>
