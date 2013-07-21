@@ -17,8 +17,8 @@ See creole.xml for the creole that presumes the dependencies are on the JVM clas
     <!-- General purpose tagger dep -->
     <JAR SCAN="False">lib/JITAR.jar</JAR>
     
-    <JAR SCAN="False">lib/slf4j-api-1.7.4.jar</JAR>
-    <JAR SCAN="False">lib/slf4j-log4j12-1.7.4.jar</JAR>
+    <JAR SCAN="False">lib/slf4j-api-1.7.2.jar</JAR>
+    <!--JAR SCAN="False">lib/slf4j-log4j12-1.7.2.jar</JAR-->
         
     <!-- Solr 4.x support -->
 
@@ -39,7 +39,6 @@ See creole.xml for the creole that presumes the dependencies are on the JVM clas
     <!-- Lucene analyzers -->
     
     <JAR SCAN="False">lib/lucene-analyzers-common-4.2.1.jar</JAR>
-    <JAR SCAN="False">lib/lucene-analyzers-kuromoji-4.2.1.jar</JAR>
     <JAR SCAN="False">lib/lucene-analyzers-phonetic-4.2.1.jar</JAR>
     <JAR SCAN="False">lib/lucene-core-4.2.1.jar</JAR>
     <JAR SCAN="False">lib/lucene-codecs-4.2.1.jar</JAR>

@@ -121,7 +121,7 @@
             </exclusions>
         </dependency>
 
-        <!-- This is a temporary version until David Lutz migrates to the new JITAR. -->
+
         <dependency>
             <groupId>org.langkit</groupId>
             <artifactId>jitar</artifactId>
