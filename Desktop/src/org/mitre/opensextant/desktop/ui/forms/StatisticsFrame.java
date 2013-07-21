@@ -16,7 +16,6 @@ import org.mitre.opensextant.desktop.ui.helpers.ViewHelper;
 import org.mitre.opensextant.desktop.ui.table.OSRow;
 import org.mitre.opensextant.desktop.util.FileSize;
 import org.mitre.opensextant.desktop.util.JobStatistics;
-import org.mitre.opensextant.processing.Geocoding;
 
 /**
  *

@@ -26,16 +26,21 @@
 **/
 package org.mitre.opensextant.processing.output;
 
-import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.io.json.JsonHierarchicalStreamDriver;
 import gate.Corpus;
 import gate.Document;
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import org.mitre.opensextant.data.Place;
-import org.mitre.opensextant.processing.*;
+
+import org.mitre.opensextant.placedata.Place;
+import org.mitre.opensextant.processing.Geocoding;
+import org.mitre.opensextant.processing.GeocodingResult;
+import org.mitre.opensextant.processing.ProcessingException;
 import org.mitre.opensextant.xcoord.GeocoordMatch;
+
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.json.JsonHierarchicalStreamDriver;
 
 /**
  * A formatter for JSON output. Place objects, along with naked Geocoords, are

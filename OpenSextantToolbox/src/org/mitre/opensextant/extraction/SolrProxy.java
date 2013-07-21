@@ -26,25 +26,26 @@
  */
 package org.mitre.opensextant.extraction;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.File;
 import java.net.MalformedURLException;
 import java.util.Date;
+
 import org.apache.solr.client.solrj.SolrServer;
 import org.apache.solr.client.solrj.SolrServerException;
+import org.apache.solr.client.solrj.embedded.EmbeddedSolrServer;
 import org.apache.solr.client.solrj.impl.HttpSolrServer;
 import org.apache.solr.client.solrj.request.UpdateRequest;
 import org.apache.solr.common.SolrDocument;
 import org.apache.solr.common.SolrInputDocument;
 import org.apache.solr.common.util.DateUtil;
 import org.apache.solr.core.CoreContainer;
+import org.mitre.opensextant.placedata.Place;
+import org.opensextant.solrtexttagger.NoSerializeEmbeddedSolrServer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.apache.solr.client.solrj.embedded.EmbeddedSolrServer;
-import org.opensextant.solrtexttagger.NoSerializeEmbeddedSolrServer;
 // TODO: move to .data.Place:
-import org.mitre.opensextant.placedata.Place;
 
 /**
  * This class creates a read-only instance of Solr for querying.

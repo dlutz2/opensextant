@@ -4,14 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import org.opensextant.giscore.events.Feature;
 import org.mitre.opensextant.processing.Geocoding;
 import org.mitre.opensextant.processing.GeocodingResult;
 import org.mitre.opensextant.processing.OpenSextantSchema;
 import org.mitre.opensextant.processing.ProcessingException;
-import org.mitre.opensextant.processing.output.GISDataModel;
 import org.mitre.opensextant.processing.output.result.Identifier;
 import org.mitre.opensextant.processing.output.result.IdentifierResult;
+import org.opensextant.giscore.events.Feature;
 
 public class IdentifierDataModel extends GISDataModel {
 

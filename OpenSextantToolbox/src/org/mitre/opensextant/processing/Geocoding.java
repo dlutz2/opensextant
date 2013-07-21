@@ -26,7 +26,6 @@
 **/
 package org.mitre.opensextant.processing;
 
-import org.mitre.opensextant.extraction.TextEntity;
 import org.mitre.opensextant.placedata.Place;
 
 /**

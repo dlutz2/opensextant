@@ -28,7 +28,6 @@ package org.mitre.opensextant.processing.output;
 
 import gate.Corpus;
 
-import java.util.List;
 import org.apache.commons.io.FilenameUtils;
 import org.mitre.opensextant.processing.Parameters;
 import org.mitre.opensextant.processing.ProcessingException;

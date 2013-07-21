@@ -27,6 +27,7 @@
 package org.mitre.opensextant.processing.output;
 
 import gate.Corpus;
+
 import org.mitre.opensextant.processing.Parameters;
 import org.mitre.opensextant.processing.ProcessingException;
 

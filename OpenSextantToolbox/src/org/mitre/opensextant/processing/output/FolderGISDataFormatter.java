@@ -28,6 +28,7 @@ package org.mitre.opensextant.processing.output;
 
 import java.io.File;
 import java.util.zip.ZipOutputStream;
+
 import org.apache.commons.io.FileUtils;
 
 /**

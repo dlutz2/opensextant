@@ -27,9 +27,10 @@
 package org.mitre.opensextant.processing.output;
 
 import gate.Corpus;
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
-import java.util.List;
+
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.json.JsonHierarchicalStreamDriver;
 

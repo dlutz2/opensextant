@@ -6,10 +6,8 @@ See creole.xml for the creole that presumes the dependencies are on the JVM clas
 
 <CREOLE-DIRECTORY>
     <JAR SCAN="True">lib/OpenSextantToolbox.jar</JAR>
-
-
-    <JAR SCAN="False" >lib/opensextant-commons.jar</JAR>
-    <JAR SCAN="False" >lib/opensextant-xponents-1.7.jar</JAR>
+    
+    <JAR SCAN="False">lib/opensextant-apps.jar</JAR>
     
     <!-- XCoord dep -->
     <JAR SCAN="False">lib/geodesy-2.0.0.jar</JAR>

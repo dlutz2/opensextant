@@ -13,10 +13,8 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
-import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.mitre.opensextant.apps.Config;
-import org.mitre.opensextant.apps.OpenSextantRunner;
 import org.mitre.opensextant.desktop.executor.opensextant.ext.converter.XTextConverter;
 import org.mitre.opensextant.desktop.executor.opensextant.ext.geocode.OSGeoCoder;
 import org.mitre.opensextant.desktop.ui.OpenSextantMainFrameImpl;

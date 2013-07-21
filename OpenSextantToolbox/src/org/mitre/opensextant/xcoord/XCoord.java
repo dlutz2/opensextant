@@ -40,10 +40,12 @@
 // */
 package org.mitre.opensextant.xcoord;
 
-import java.util.*;
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 
-import org.mitre.opensextant.flexpat.*;
+import org.mitre.opensextant.flexpat.RegexPattern;
+import org.mitre.opensextant.flexpat.TextMatch;
+import org.mitre.opensextant.flexpat.TextMatchResultSet;
 import org.mitre.opensextant.util.TextUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -56,7 +58,7 @@ import org.slf4j.LoggerFactory;
  */
 public class XCoord {
 
-    String patterns_file = "/geocoord_regex.cfg";
+    String patterns_file;
     PatternManager patterns = null;
     static Logger log = LoggerFactory.getLogger(XCoord.class);
     private boolean debug = false;
@@ -89,15 +91,7 @@ public class XCoord {
         this(false);
     }
 
-    /**
-     * Configure with the default coordinate patterns file, geocoord_regex.cfg
-     * in CLASSPATH
-     *
-     * @throws XCoordException
-     */
-    public void configure() throws XCoordException {
-        configure(getClass().getResource(patterns_file)); // default
-    }
+
 
     /**
      * Configure using a particular pattern file.
@@ -108,6 +102,10 @@ public class XCoord {
     public void configure(String patfile) throws XCoordException {
         if (patfile != null) {
             patterns_file = patfile;
+        }else{
+            String msg = "Null pattern file";
+            log.error(msg);
+            throw new XCoordException(msg);
         }
 
         try {
@@ -130,7 +128,9 @@ public class XCoord {
     public void configure(java.net.URL patfile) throws XCoordException {
 
         if (patfile == null) {
-            configure();
+        	 String msg = "Null pattern file";
+             log.error(msg);
+             throw new XCoordException(msg);
         } else {
             try {
                 patterns_file = patfile.getFile();
@@ -414,8 +414,7 @@ public class XCoord {
         gnu.getopt.Getopt opts = new gnu.getopt.Getopt("XCoord", args, "af:t:u:");
 
         try {
-            //xc.configure( "file:./etc/test_regex.cfg"); // default
-            xc.configure(); // default
+            xc.configure( "file:./etc/test_regex.cfg"); // default
             TestScript test = new TestScript(xc);
 
             int c;

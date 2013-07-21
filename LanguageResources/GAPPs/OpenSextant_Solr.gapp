@@ -2,10 +2,10 @@
   <urlList class="gate.util.persistence.CollectionPersistence">
     <localList>
       <gate.util.persistence.PersistenceManager-URLHolder>
-        <urlString>$gatehome$plugins/ANNIE/</urlString>
+        <urlString>$gatehome$plugins/OpenSextantToolbox/</urlString>
       </gate.util.persistence.PersistenceManager-URLHolder>
       <gate.util.persistence.PersistenceManager-URLHolder>
-        <urlString>$gatehome$plugins/OpenSextantToolbox/</urlString>
+        <urlString>$gatehome$plugins/ANNIE/</urlString>
       </gate.util.persistence.PersistenceManager-URLHolder>
     </localList>
     <collectionType>java.util.ArrayList</collectionType>
@@ -173,12 +173,12 @@
               <mapType>gate.util.SimpleFeatureMapImpl</mapType>
               <localMap>
                 <entry>
-                  <string>stringFeatureName</string>
-                  <string>string</string>
-                </entry>
-                <entry>
                   <string>document</string>
                   <null/>
+                </entry>
+                <entry>
+                  <string>stringFeatureName</string>
+                  <string>string</string>
                 </entry>
                 <entry>
                   <string>corpus</string>
@@ -197,12 +197,12 @@
                   <string>orth</string>
                 </entry>
                 <entry>
-                  <string>tokenAnnoName</string>
-                  <string>Token</string>
-                </entry>
-                <entry>
                   <string>caseDecisionName</string>
                   <string>CaseDecision</string>
+                </entry>
+                <entry>
+                  <string>tokenAnnoName</string>
+                  <string>Token</string>
                 </entry>
               </localMap>
             </runtimeParams>
@@ -399,52 +399,6 @@
           <runMode>1</runMode>
           <featureName></featureName>
           <featureValue></featureValue>
-          <pr class="gate.util.persistence.PRPersistence">
-            <runtimeParams class="gate.util.persistence.MapPersistence">
-              <mapType>gate.util.SimpleFeatureMapImpl</mapType>
-              <localMap>
-                <entry>
-                  <string>document</string>
-                  <null/>
-                </entry>
-                <entry>
-                  <string>outputAnnotationSet</string>
-                  <null/>
-                </entry>
-                <entry>
-                  <string>corpus</string>
-                  <null/>
-                </entry>
-              </localMap>
-            </runtimeParams>
-            <resourceType>org.mitre.opensextant.toolbox.GeocoordFinderPR</resourceType>
-            <resourceName>GeocoordFinder</resourceName>
-            <initParams class="gate.util.persistence.MapPersistence">
-              <mapType>gate.util.SimpleFeatureMapImpl</mapType>
-              <localMap>
-                <entry>
-                  <string>patternFile</string>
-                  <null/>
-
-                  <!--   Provide a valid absolute path to an XCoord patterns file to override the default
-                  <gate.util.persistence.PersistenceManager-URLHolder>
-                    <urlString>$relpath$../resources/patterns/geocoord_regex.cfg</urlString>
-                  </gate.util.persistence.PersistenceManager-URLHolder>
-                  -->
-
-                </entry>
-              </localMap>
-            </initParams>
-            <features class="gate.util.persistence.MapPersistence">
-              <mapType>gate.util.SimpleFeatureMapImpl</mapType>
-              <localMap/>
-            </features>
-          </pr>
-        </gate.util.persistence.AnalyserRunningStrategyPersistence>
-        <gate.util.persistence.AnalyserRunningStrategyPersistence>
-          <runMode>1</runMode>
-          <featureName></featureName>
-          <featureValue></featureValue>
           <pr class="gate.util.persistence.LanguageAnalyserPersistence">
             <runtimeParams class="gate.util.persistence.MapPersistence">
               <mapType>gate.util.SimpleFeatureMapImpl</mapType>
@@ -497,6 +451,47 @@
                 <entry>
                   <string>binaryGrammarURL</string>
                   <null/>
+                </entry>
+              </localMap>
+            </initParams>
+            <features class="gate.util.persistence.MapPersistence">
+              <mapType>gate.util.SimpleFeatureMapImpl</mapType>
+              <localMap/>
+            </features>
+          </pr>
+        </gate.util.persistence.AnalyserRunningStrategyPersistence>
+        <gate.util.persistence.AnalyserRunningStrategyPersistence>
+          <runMode>1</runMode>
+          <featureName></featureName>
+          <featureValue></featureValue>
+          <pr class="gate.util.persistence.PRPersistence">
+            <runtimeParams class="gate.util.persistence.MapPersistence">
+              <mapType>gate.util.SimpleFeatureMapImpl</mapType>
+              <localMap>
+                <entry>
+                  <string>document</string>
+                  <null/>
+                </entry>
+                <entry>
+                  <string>outputAnnotationSet</string>
+                  <null/>
+                </entry>
+                <entry>
+                  <string>corpus</string>
+                  <null/>
+                </entry>
+              </localMap>
+            </runtimeParams>
+            <resourceType>org.mitre.opensextant.toolbox.GeocoordFinderPR</resourceType>
+            <resourceName>Geocoord Finder</resourceName>
+            <initParams class="gate.util.persistence.MapPersistence">
+              <mapType>gate.util.SimpleFeatureMapImpl</mapType>
+              <localMap>
+                <entry>
+                  <string>patternFile</string>
+                  <gate.util.persistence.PersistenceManager-URLHolder>
+                    <urlString>$relpath$../resources/patterns/geocoord_regex.cfg</urlString>
+                  </gate.util.persistence.PersistenceManager-URLHolder>
                 </entry>
               </localMap>
             </initParams>
@@ -714,15 +709,15 @@
                   <null/>
                 </entry>
                 <entry>
-                  <string>inputASName</string>
-                  <null/>
-                </entry>
-                <entry>
                   <string>document</string>
                   <null/>
                 </entry>
                 <entry>
                   <string>corpus</string>
+                  <null/>
+                </entry>
+                <entry>
+                  <string>inputASName</string>
                   <null/>
                 </entry>
               </localMap>
@@ -769,12 +764,12 @@
                   <string>placecandidate</string>
                 </entry>
                 <entry>
-                  <string>document</string>
-                  <null/>
-                </entry>
-                <entry>
                   <string>candidateFeatureName</string>
                   <string>placeCandidate</string>
+                </entry>
+                <entry>
+                  <string>document</string>
+                  <null/>
                 </entry>
                 <entry>
                   <string>outputAnnotationSet</string>
@@ -811,15 +806,15 @@
                   <null/>
                 </entry>
                 <entry>
-                  <string>inputASName</string>
-                  <null/>
-                </entry>
-                <entry>
                   <string>document</string>
                   <null/>
                 </entry>
                 <entry>
                   <string>corpus</string>
+                  <null/>
+                </entry>
+                <entry>
+                  <string>inputASName</string>
                   <null/>
                 </entry>
               </localMap>
@@ -867,8 +862,8 @@
         <gate.util.persistence.LanguageAnalyserPersistence reference="../../../strategiesList/localList/gate.util.persistence.AnalyserRunningStrategyPersistence[5]/pr"/>
         <gate.util.persistence.LanguageAnalyserPersistence reference="../../../strategiesList/localList/gate.util.persistence.AnalyserRunningStrategyPersistence[6]/pr"/>
         <gate.util.persistence.PRPersistence reference="../../../strategiesList/localList/gate.util.persistence.AnalyserRunningStrategyPersistence[7]/pr"/>
-        <gate.util.persistence.PRPersistence reference="../../../strategiesList/localList/gate.util.persistence.AnalyserRunningStrategyPersistence[8]/pr"/>
-        <gate.util.persistence.LanguageAnalyserPersistence reference="../../../strategiesList/localList/gate.util.persistence.AnalyserRunningStrategyPersistence[9]/pr"/>
+        <gate.util.persistence.LanguageAnalyserPersistence reference="../../../strategiesList/localList/gate.util.persistence.AnalyserRunningStrategyPersistence[8]/pr"/>
+        <gate.util.persistence.PRPersistence reference="../../../strategiesList/localList/gate.util.persistence.AnalyserRunningStrategyPersistence[9]/pr"/>
         <gate.util.persistence.LanguageAnalyserPersistence reference="../../../strategiesList/localList/gate.util.persistence.AnalyserRunningStrategyPersistence[10]/pr"/>
         <gate.util.persistence.LanguageAnalyserPersistence reference="../../../strategiesList/localList/gate.util.persistence.AnalyserRunningStrategyPersistence[11]/pr"/>
         <gate.util.persistence.LanguageAnalyserPersistence reference="../../../strategiesList/localList/gate.util.persistence.AnalyserRunningStrategyPersistence[12]/pr"/>

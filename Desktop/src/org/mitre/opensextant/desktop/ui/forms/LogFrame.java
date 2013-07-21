@@ -4,7 +4,6 @@
  */
 package org.mitre.opensextant.desktop.ui.forms;
 
-import java.awt.event.MouseEvent;
 import java.io.BufferedReader;
 import java.io.FileReader;
 

@@ -11,7 +11,9 @@
 package org.mitre.opensextant.apps;
 
 import gate.Gate;
+
 import java.io.File;
+
 import org.mitre.opensextant.processing.ProcessingException;
 
 /**

@@ -27,6 +27,7 @@
 package org.mitre.opensextant.placedata;
 
 import java.io.Serializable;
+import java.util.Set;
 
 /**
  * A Place represents a named geographic location, a "place". It contains
@@ -58,6 +59,9 @@ public class Place implements Comparable<Object>, Serializable {
     private Double name_bias;
     private Double id_bias;
 
+    private Set<String> aliases;
+    private Set<String> regions;
+    
     // construct a place with defaults
     public Place() {
     }
@@ -273,4 +277,37 @@ public class Place implements Comparable<Object>, Serializable {
     }
     public final static char ABBREVIATION_TYPE = 'A';
     public final static char NAME_TYPE = 'N';
+    
+    
+	/** Country is also known as some list of aliases
+	 * @param nm 
+	 */
+	public void addAlias(String nm) {
+	    aliases.add(nm);
+	}
+
+	/**
+	 *
+	 * @return
+	 */
+	public Set<String> getAliases() {
+	    return aliases;
+	}
+
+	/** Country is also known as some list of aliases
+	 * @param regionid 
+	*/
+	public void addRegion(String regionid) {
+	    regions.add(regionid);
+	}
+
+	/**
+	 *
+	 * @return
+	 */
+	public Set<String> getRegions() {
+	    return regions;
+	}
+    
+    
 }

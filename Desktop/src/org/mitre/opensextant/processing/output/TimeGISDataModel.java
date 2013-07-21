@@ -1,15 +1,11 @@
 package org.mitre.opensextant.processing.output;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.opensextant.giscore.events.Feature;
-import org.opensextant.giscore.events.SimpleField;
-import org.opensextant.giscore.utils.SafeDateFormat;
 import org.mitre.opensextant.desktop.ui.helpers.ConfigHelper.GeoExtraction;
 import org.mitre.opensextant.desktop.ui.helpers.ConfigHelper.TimeAssociation;
 import org.mitre.opensextant.processing.Geocoding;
@@ -17,6 +13,9 @@ import org.mitre.opensextant.processing.GeocodingResult;
 import org.mitre.opensextant.processing.ProcessingException;
 import org.mitre.opensextant.processing.output.result.ParsedTime;
 import org.mitre.opensextant.processing.output.result.TimedGeocodingResult;
+import org.opensextant.giscore.events.Feature;
+import org.opensextant.giscore.events.SimpleField;
+import org.opensextant.giscore.utils.SafeDateFormat;
 
 public class TimeGISDataModel extends FilteringGISDataModel {
 

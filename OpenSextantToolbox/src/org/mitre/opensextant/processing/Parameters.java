@@ -28,6 +28,7 @@ package org.mitre.opensextant.processing;
 
 import java.util.HashSet;
 import java.util.Set;
+
 import org.mitre.opensextant.util.TextUtils;
 
 /**

@@ -29,10 +29,12 @@ package org.mitre.opensextant.processing;
 import gate.Annotation;
 import gate.FeatureMap;
 import gate.Utils;
-import java.util.Map;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.ArrayList;
+import java.util.Map;
+
 import org.mitre.opensextant.placedata.Geocoord;
 import org.mitre.opensextant.placedata.Place;
 import org.mitre.opensextant.placedata.PlaceCandidate;

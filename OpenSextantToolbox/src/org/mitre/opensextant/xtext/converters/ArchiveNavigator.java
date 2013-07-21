@@ -24,20 +24,27 @@
  * (c) 2012 The MITRE Corporation. All Rights Reserved.
  * **************************************************************************
  */
-package org.mitre.xtext.opensextant.converters;
+package org.mitre.opensextant.xtext.converters;
 
-import java.io.*;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.zip.GZIPInputStream;
-import org.apache.commons.io.FilenameUtils;
 
-import org.apache.commons.compress.archivers.ArchiveStreamFactory;
 import org.apache.commons.compress.archivers.ArchiveEntry;
 import org.apache.commons.compress.archivers.ArchiveException;
-import org.apache.commons.compress.archivers.zip.*;
-import org.apache.commons.compress.archivers.tar.*;
+import org.apache.commons.compress.archivers.ArchiveStreamFactory;
+import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
+import org.apache.commons.compress.archivers.tar.TarArchiveInputStream;
+import org.apache.commons.compress.archivers.zip.ZipArchiveEntry;
+import org.apache.commons.compress.archivers.zip.ZipArchiveInputStream;
 import org.apache.commons.compress.utils.IOUtils;
-import org.apache.commons.io.FileUtils;
-
+import org.apache.commons.io.FilenameUtils;
 import org.mitre.opensextant.util.FileUtility;
 import org.mitre.opensextant.xtext.iConvert;
 import org.mitre.opensextant.xtext.iFilter;

@@ -28,6 +28,7 @@ package org.mitre.opensextant.extraction;
 
 import java.util.Collection;
 import java.util.Collections;
+
 import org.apache.solr.client.solrj.SolrRequest;
 import org.apache.solr.client.solrj.request.QueryRequest;
 import org.apache.solr.common.params.SolrParams;

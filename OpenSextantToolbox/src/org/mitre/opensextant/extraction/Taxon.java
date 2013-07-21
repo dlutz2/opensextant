@@ -1,10 +1,10 @@
 
 package org.mitre.opensextant.extraction;
 
-import java.util.Set;
-import java.util.HashSet;
-import java.util.Collection;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * For now, what seems useful are catalog, name, terms.

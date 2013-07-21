@@ -25,7 +25,7 @@
  */
 package org.mitre.opensextant.flexpat;
 
-import org.mitre.opensextant.extraction.TextEntity;
+import org.mitre.opensextant.processing.TextEntity;
 
 /**
  *

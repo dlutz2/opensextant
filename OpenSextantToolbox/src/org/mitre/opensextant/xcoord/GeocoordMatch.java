@@ -28,12 +28,13 @@ package org.mitre.opensextant.xcoord;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.mitre.opensextant.data.GeodeticUtility;
+import org.mitre.opensextant.flexpat.TextMatch;
 import org.opensextant.geodesy.Angle;
 import org.opensextant.geodesy.Latitude;
 import org.opensextant.geodesy.Longitude;
 import org.opensextant.geodesy.MGRS;
-import org.mitre.opensextant.data.GeodeticUtility;
-import org.mitre.opensextant.flexpat.TextMatch;
 
 /**
  * GeocoordMatch holds all the annotation data for the actual raw and normalized

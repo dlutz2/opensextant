@@ -26,12 +26,12 @@
 **/
 package org.mitre.opensextant.placedata;
 
-import org.mitre.opensextant.extraction.TextEntity;
+import org.mitre.opensextant.processing.TextEntity;
 
 /**
  * A Geocoord represents spatial coordinates on the globe. 
  */
-public class Geocoord extends TextEntity implements java.io.Serializable {
+public class Geocoord extends TextEntity  implements java.io.Serializable {
 
    
     private static final long serialVersionUID = -3313528469542406371L;

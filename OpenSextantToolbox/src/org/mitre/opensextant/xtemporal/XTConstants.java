@@ -26,7 +26,8 @@
  */
 package org.mitre.opensextant.xtemporal;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**

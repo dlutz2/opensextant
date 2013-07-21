@@ -32,9 +32,11 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Map;
 
-import org.mitre.opensextant.flexpat.*;
-import org.slf4j.LoggerFactory;
+import org.mitre.opensextant.flexpat.PatternTestCase;
+import org.mitre.opensextant.flexpat.RegexPattern;
+import org.mitre.opensextant.flexpat.RegexPatternManager;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  */

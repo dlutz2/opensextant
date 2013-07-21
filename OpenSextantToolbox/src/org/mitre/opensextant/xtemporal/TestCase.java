@@ -26,9 +26,9 @@
  */
 package org.mitre.opensextant.xtemporal;
 
-import org.mitre.opensextant.flexpat.*;
-
 import java.util.Date;
+
+import org.mitre.opensextant.flexpat.PatternTestCase;
 
 /**
  *

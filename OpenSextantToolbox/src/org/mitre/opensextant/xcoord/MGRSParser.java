@@ -27,8 +27,9 @@
 package org.mitre.opensextant.xcoord;
 
 import java.util.Map;
-import org.opensextant.geodesy.*;
+
 import org.mitre.opensextant.util.TextUtils;
+import org.opensextant.geodesy.MGRS;
 
 /**
  *

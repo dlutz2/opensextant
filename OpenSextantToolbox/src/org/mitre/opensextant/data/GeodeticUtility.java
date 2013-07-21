@@ -65,7 +65,7 @@ public class GeodeticUtility {
      *
      * @return distance between p1 and p2 in degrees.
      */
-    public static double distanceDegrees(GeoBase p1, GeoBase p2) {
+    public static double distanceDegrees(org.mitre.opensextant.placedata.Place p1, org.mitre.opensextant.placedata.Place p2) {
         if (p1 == null || p2 == null){
             return Double.MAX_VALUE;
         }

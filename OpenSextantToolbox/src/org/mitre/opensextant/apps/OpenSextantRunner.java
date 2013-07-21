@@ -30,19 +30,23 @@ import gate.CorpusController;
 import gate.Document;
 import gate.Factory;
 import gate.util.persistence.PersistenceManager;
+
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import org.apache.commons.io.FilenameUtils;
 import org.mitre.opensextant.extraction.ExtractionMetrics;
-import org.mitre.opensextant.processing.*;
+import org.mitre.opensextant.processing.OpenSextantCorpusProcessor;
+import org.mitre.opensextant.processing.OpenSextantSchema;
+import org.mitre.opensextant.processing.ProcessingException;
 import org.mitre.opensextant.processing.output.AbstractFormatter;
 import org.mitre.opensextant.xtext.ConversionListener;
 import org.mitre.opensextant.xtext.ConvertedDocument;
 import org.mitre.opensextant.xtext.XText;
 import org.slf4j.LoggerFactory;
-import org.apache.commons.io.FilenameUtils;
-
-
-import java.util.*;
 
 /**
  * Runs OpenSextant as a standalone application or as an API.

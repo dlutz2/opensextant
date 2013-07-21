@@ -14,8 +14,7 @@ need to be loaded by the GATE class loader. See creole_LOCAL.xml for the creole 
 
      ==============================================================
 
-    <JAR SCAN="False" >lib/opensextant-commons.jar</JAR>
-    <JAR SCAN="False" >lib/opensextant-xponents-1.6.jar</JAR>
+	 <JAR SCAN="False">lib/opensextant-apps.jar</JAR>
     
     <! XCoord dep >
     <JAR SCAN="False">lib/geodesy-1.9.24.jar</JAR>

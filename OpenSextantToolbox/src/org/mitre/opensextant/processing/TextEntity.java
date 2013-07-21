@@ -40,7 +40,7 @@
 // *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
 // */
 
-package org.mitre.opensextant.extraction;
+package org.mitre.opensextant.processing;
 
 /**
  * Modeled after FlexPat TextMatch or GATE's Annotation -- this is intended to be

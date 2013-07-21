@@ -24,10 +24,11 @@
  * (c) 2012 The MITRE Corporation. All Rights Reserved.
  * **************************************************************************
  */
-package org.mitre.xtext.opensextant.converters;
+package org.mitre.opensextant.xtext.converters;
 
 import java.io.IOException;
 import java.io.InputStream;
+
 import org.apache.poi.hwpf.extractor.WordExtractor;
 import org.mitre.opensextant.xtext.ConvertedDocument;
 

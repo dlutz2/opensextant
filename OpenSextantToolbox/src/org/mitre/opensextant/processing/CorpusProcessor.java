@@ -28,8 +28,9 @@ package org.mitre.opensextant.processing;
 
 import gate.Corpus;
 import gate.CorpusController;
-import org.mitre.opensextant.processing.output.ResultsFormatter;
+
 import org.mitre.opensextant.extraction.ExtractionMetrics;
+import org.mitre.opensextant.processing.output.ResultsFormatter;
 
 
 

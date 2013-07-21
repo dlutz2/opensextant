@@ -1,17 +1,13 @@
 package org.mitre.opensextant.processing.output.result;
 
-import gate.Annotation;
 import gate.Document;
-import gate.Utils;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import org.mitre.opensextant.desktop.ui.helpers.ConfigHelper.GeoExtraction;
-import org.mitre.opensextant.desktop.ui.helpers.ConfigHelper.TimeAssociation;
 import org.mitre.opensextant.processing.Geocoding;
 import org.mitre.opensextant.processing.GeocodingResult;
 import org.mitre.opensextant.processing.Parameters;

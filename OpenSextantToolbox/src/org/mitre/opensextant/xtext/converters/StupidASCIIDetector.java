@@ -24,7 +24,7 @@
  * (c) 2012 The MITRE Corporation. All Rights Reserved.
  * **************************************************************************
  */
-package org.mitre.xtext.opensextant.converters;
+package org.mitre.opensextant.xtext.converters;
 
 /**
  * For whatever reason it is impossible to determine if a file is purely ASCII 

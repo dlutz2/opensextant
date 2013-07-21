@@ -42,11 +42,13 @@ package org.mitre.opensextant.util;
 
 import java.security.MessageDigest;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.HashMap;
-import java.util.Map;
-import java.util.regex.*;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.apache.commons.lang.StringUtils;
 import org.mitre.opensextant.data.Language;
 

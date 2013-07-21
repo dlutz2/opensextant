@@ -25,17 +25,22 @@
  */
 package org.mitre.opensextant.xtext;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.io.*;
-import org.apache.commons.io.FilenameUtils;
-import java.util.Set;
+import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
-import java.util.HashMap;
+import java.util.Set;
+
 import org.apache.commons.io.FileUtils;
-import org.mitre.xtext.opensextant.converters.*;
+import org.apache.commons.io.FilenameUtils;
+import org.mitre.opensextant.xtext.converters.ArchiveNavigator;
+import org.mitre.opensextant.xtext.converters.DefaultConverter;
+import org.mitre.opensextant.xtext.converters.PDFConverter;
+import org.mitre.opensextant.xtext.converters.TextTranscodingConverter;
+import org.mitre.opensextant.xtext.converters.TikaHTMLConverter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *

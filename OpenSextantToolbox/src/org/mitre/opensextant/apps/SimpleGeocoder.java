@@ -28,19 +28,21 @@ package org.mitre.opensextant.apps;
 
 import gate.Corpus;
 import gate.CorpusController;
-import gate.FeatureMap;
 import gate.Document;
 import gate.Factory;
+import gate.FeatureMap;
 import gate.util.persistence.PersistenceManager;
+
 import java.io.File;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
+
 import org.mitre.opensextant.extraction.ExtractionMetrics;
 import org.mitre.opensextant.processing.GeocodingResult;
-import org.mitre.opensextant.processing.TextInput;
 import org.mitre.opensextant.processing.ProcessingException;
-import org.slf4j.LoggerFactory;
+import org.mitre.opensextant.processing.TextInput;
 import org.mitre.opensextant.util.TextUtils;
+import org.slf4j.LoggerFactory;
 
 /**
  * This is the simplest geocoding API we could devise to support embedding

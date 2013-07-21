@@ -13,12 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.mitre.xtext.opensextant.converters;
+package org.mitre.opensextant.xtext.converters;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.File;
+
 import org.apache.commons.io.IOUtils;
 import org.mitre.opensextant.xtext.ConvertedDocument;
 import org.mitre.opensextant.xtext.iConvert;

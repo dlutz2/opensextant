@@ -12,9 +12,6 @@ import java.util.List;
 import java.util.Set;
 
 import org.mitre.opensextant.desktop.ui.helpers.ConfigHelper.GeoExtraction;
-import org.mitre.opensextant.desktop.ui.helpers.ConfigHelper.TimeAssociation;
-import org.mitre.opensextant.processing.Geocoding;
-import org.mitre.opensextant.processing.GeocodingResult;
 import org.mitre.opensextant.processing.Parameters;
 import org.mitre.opensextant.processing.ProcessingException;
 import org.slf4j.Logger;

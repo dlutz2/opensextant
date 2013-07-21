@@ -32,7 +32,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.mitre.opensextant.extraction.TextEntity;
+
+import org.mitre.opensextant.processing.TextEntity;
 
 /**
  * A PlaceCandidate represents a portion of a document which has been identified as a

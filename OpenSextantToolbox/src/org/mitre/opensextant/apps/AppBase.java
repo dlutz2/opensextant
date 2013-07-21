@@ -26,16 +26,17 @@
  */
 package org.mitre.opensextant.apps;
 
-import gate.CorpusController;
 import gate.Corpus;
-import java.io.IOException;
-import org.slf4j.Logger;
-// import org.slf4j.LoggerFactory;
+import gate.CorpusController;
 
-import org.mitre.opensextant.processing.ProcessingException;
+import java.io.IOException;
+
 import org.mitre.opensextant.processing.Parameters;
+import org.mitre.opensextant.processing.ProcessingException;
 import org.mitre.opensextant.processing.output.AbstractFormatter;
 import org.mitre.opensextant.processing.output.FormatterFactory;
+import org.slf4j.Logger;
+// import org.slf4j.LoggerFactory;
 
 /**
  *

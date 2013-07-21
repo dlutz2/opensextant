@@ -27,12 +27,12 @@
 package org.mitre.opensextant.processing;
 
 import java.text.DecimalFormat;
-import org.mitre.opensextant.util.TextUtils;
-import org.mitre.opensextant.extraction.TextEntity;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.Map;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
+import org.mitre.opensextant.util.TextUtils;
 
 /**
  * Abstract class encapsulating basic results formatter functionality.

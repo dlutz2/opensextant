@@ -23,18 +23,19 @@
  * (c) 2012 The MITRE Corporation. All Rights Reserved.
  * **************************************************************************
  */
-package org.mitre.xtext.opensextant.converters;
+package org.mitre.opensextant.xtext.converters;
 
-import org.xml.sax.ContentHandler;
 import java.io.IOException;
-import org.apache.tika.parser.html.HtmlParser;
-import org.apache.tika.parser.ParseContext;
+import java.io.InputStream;
+
 import org.apache.tika.metadata.Metadata;
+import org.apache.tika.parser.ParseContext;
+import org.apache.tika.parser.html.BoilerpipeContentHandler;
+import org.apache.tika.parser.html.HtmlParser;
 import org.apache.tika.sax.BodyContentHandler;
-import java.io.*;
 import org.mitre.opensextant.util.TextUtils;
 import org.mitre.opensextant.xtext.ConvertedDocument;
-import org.apache.tika.parser.html.BoilerpipeContentHandler;
+import org.xml.sax.ContentHandler;
 
 /**
  * A Tika HTML parser that reduces large amounts of empty lines in converted

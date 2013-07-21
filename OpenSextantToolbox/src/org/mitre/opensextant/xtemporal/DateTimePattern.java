@@ -26,7 +26,7 @@
  */
 package org.mitre.opensextant.xtemporal;
 
-import org.mitre.opensextant.flexpat.*;
+import org.mitre.opensextant.flexpat.RegexPattern;
 
 /**
  *

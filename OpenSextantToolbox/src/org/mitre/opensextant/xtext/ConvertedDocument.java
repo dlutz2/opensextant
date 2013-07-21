@@ -26,17 +26,19 @@
 package org.mitre.opensextant.xtext;
 
 import java.io.File;
-import net.sf.json.JSONObject;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import org.mitre.opensextant.util.FileUtility;
-import java.util.Date;
-import java.util.Set;
-import java.util.HashSet;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+
+import net.sf.json.JSONObject;
+
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.FilenameUtils;
+import org.mitre.opensextant.util.FileUtility;
 
 /**
  *

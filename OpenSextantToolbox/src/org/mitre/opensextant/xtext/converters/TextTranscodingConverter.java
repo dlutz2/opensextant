@@ -23,14 +23,16 @@
  * (c) 2012 The MITRE Corporation. All Rights Reserved.
  * **************************************************************************
  */
-package org.mitre.xtext.opensextant.converters;
+package org.mitre.opensextant.xtext.converters;
 
 import java.io.IOException;
-import com.ibm.icu.text.CharsetDetector;
-import com.ibm.icu.text.CharsetMatch;
+
 import org.apache.poi.util.IOUtils;
 import org.mitre.opensextant.util.FileUtility;
 import org.mitre.opensextant.xtext.ConvertedDocument;
+
+import com.ibm.icu.text.CharsetDetector;
+import com.ibm.icu.text.CharsetMatch;
 
 /**
  *

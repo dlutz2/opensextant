@@ -38,7 +38,7 @@
  */
 package org.mitre.opensextant.xtemporal;
 
-import java.util.*;
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 
 import org.mitre.opensextant.flexpat.PatternTestCase;
@@ -46,6 +46,7 @@ import org.mitre.opensextant.flexpat.RegexPattern;
 import org.mitre.opensextant.flexpat.TextMatch;
 import org.mitre.opensextant.flexpat.TextMatchResultSet;
 import org.mitre.opensextant.util.TextUtils;
+import org.mitre.opensextant.xcoord.XCoordException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -55,7 +56,7 @@ import org.slf4j.LoggerFactory;
  */
 public class XTemporal {
 
-    String patterns_file = "/datetime_patterns.cfg";
+    String patterns_file;
     org.mitre.opensextant.xtemporal.PatternManager patterns = null;
     static Logger log = LoggerFactory.getLogger(XTemporal.class);
     private boolean debug = false;
@@ -80,13 +81,7 @@ public class XTemporal {
         this(false);
     }
 
-    /**
-     *
-     * @throws XTempException
-     */
-    public void configure() throws XTempException {
-        configure(getClass().getResource(patterns_file)); // default
-    }
+
 
     /**
      *
@@ -96,6 +91,10 @@ public class XTemporal {
     public void configure(String patfile) throws XTempException {
         if (patfile != null) {
             patterns_file = patfile;
+        }else{
+            String msg = "Null pattern file";
+            log.error(msg);
+            throw new XTempException(msg);
         }
 
         try {
@@ -369,7 +368,7 @@ public class XTemporal {
         }
 
         try {
-            xdt.configure();
+            xdt.configure("someFile.cfg");
 
             if (systemTest) {
                 System.out.println("\tSYSTEM TESTS=======\n");

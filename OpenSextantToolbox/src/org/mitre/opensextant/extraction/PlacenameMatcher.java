@@ -33,6 +33,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.solr.client.solrj.SolrRequest;
@@ -43,16 +44,16 @@ import org.apache.solr.common.params.CommonParams;
 import org.apache.solr.common.params.ModifiableSolrParams;
 import org.apache.solr.common.params.SolrParams;
 import org.apache.solr.common.util.NamedList;
-// TOOD: migrate to commons data.Place
-// import org.mitre.opensextant.data.Place;
 import org.mitre.opensextant.placedata.Place;
 import org.mitre.opensextant.placedata.PlaceCandidate;
 import org.mitre.opensextant.util.TextUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.google.common.cache.CacheBuilder;
+
 import com.google.common.cache.Cache;
-import java.util.concurrent.TimeUnit;
+import com.google.common.cache.CacheBuilder;
+// TOOD: migrate to commons data.Place
+// import org.mitre.opensextant.data.Place;
 
 /**
  *

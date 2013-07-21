@@ -29,9 +29,9 @@ package org.mitre.opensextant.xcoord;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-//import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+//import java.util.Calendar;
 
 /**
  * DMS Filters include ignoring these patterns: dd-dd-dd HH:MM:ss (where

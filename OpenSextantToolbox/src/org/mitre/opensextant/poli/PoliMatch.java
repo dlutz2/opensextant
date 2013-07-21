@@ -27,9 +27,9 @@
  */
 package org.mitre.opensextant.poli;
 
-import org.mitre.opensextant.flexpat.TextMatch;
-
 import java.util.Map;
+
+import org.mitre.opensextant.flexpat.TextMatch;
 
 /**
  *

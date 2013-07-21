@@ -30,18 +30,16 @@ package org.mitre.opensextant.poli;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.apache.commons.io.FileUtils;
-
 import org.apache.commons.io.FilenameUtils;
-
 import org.mitre.opensextant.flexpat.PatternTestCase;
 import org.mitre.opensextant.flexpat.TextMatch;
 import org.mitre.opensextant.util.FileUtility;
-
-import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
-
+import org.slf4j.LoggerFactory;
 import org.supercsv.cellprocessor.Optional;
 import org.supercsv.cellprocessor.constraint.NotNull;
 import org.supercsv.cellprocessor.ift.CellProcessor;

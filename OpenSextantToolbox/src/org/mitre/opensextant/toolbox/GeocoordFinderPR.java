@@ -39,12 +39,12 @@ import gate.creole.metadata.CreoleResource;
 import gate.creole.metadata.Optional;
 import gate.creole.metadata.RunTime;
 import gate.util.InvalidOffsetException;
+
 import java.net.URL;
 import java.util.List;
 
 import org.mitre.opensextant.flexpat.TextMatch;
 import org.mitre.opensextant.placedata.Geocoord;
-import org.mitre.opensextant.processing.Parameters;
 import org.mitre.opensextant.xcoord.GeocoordMatch;
 import org.mitre.opensextant.xcoord.XCoord;
 import org.mitre.opensextant.xcoord.XCoordException;
@@ -176,14 +176,6 @@ public class GeocoordFinderPR extends AbstractLanguageAnalyser implements
      */
     @Override
     public void execute() throws ExecutionException {
-
-        //  Shunt added to allow us to use the same GAPP setup for our application
-        //  but temporarily by pass XCoord extraction if we know a data source
-        //  has no coordinates.
-        // 
-        if ((Parameters.RUNTIME_FLAGS & Parameters.FLAG_NO_COORDINATES) >0) {
-            return;
-        }
 
         // get the annotation set into which we will place any annotations found
         AnnotationSet annotSet = (outputAnnotationSet == null || outputAnnotationSet

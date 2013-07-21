@@ -29,6 +29,7 @@ package org.mitre.opensextant.extraction;
 
 import java.io.IOException;
 import java.util.Set;
+
 import org.mitre.opensextant.util.FileUtility;
 
 public class MatchFilter /*implements Filter*/ {

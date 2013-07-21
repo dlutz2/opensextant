@@ -23,19 +23,19 @@
  * (c) 2012 The MITRE Corporation. All Rights Reserved.
  * **************************************************************************
  */
-package org.mitre.xtext.opensextant.converters;
+package org.mitre.opensextant.xtext.converters;
 
+import java.io.IOException;
 import java.io.InputStream;
-import org.apache.tika.parser.Parser;
+
+import org.apache.tika.metadata.Metadata;
 import org.apache.tika.parser.AutoDetectParser;
 import org.apache.tika.parser.ParseContext;
-import org.apache.tika.metadata.Metadata;
-import org.xml.sax.ContentHandler;
+import org.apache.tika.parser.Parser;
 import org.apache.tika.sax.ToTextContentHandler;
 import org.mitre.opensextant.util.TextUtils;
 import org.mitre.opensextant.xtext.ConvertedDocument;
-
-import java.io.IOException;
+import org.xml.sax.ContentHandler;
 
 /**
  *

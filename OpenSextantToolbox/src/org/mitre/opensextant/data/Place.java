@@ -41,12 +41,14 @@
 package org.mitre.opensextant.data;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  *
  * @author Marc C. Ubaldino, MITRE <ubaldino at mitre dot org>
  */
-public class Place extends GeoBase implements Comparable<Object>, Serializable {
+public class Place implements Comparable<Object>, Serializable {
 
     private static final long serialVersionUID = 2389068012345L;
     /**
@@ -59,15 +61,12 @@ public class Place extends GeoBase implements Comparable<Object>, Serializable {
     protected String admin1 = null;
     protected String admin2 = null;
 
-    /**
-     * Creates a new instance of Geobase
-     *
-     * @param pk
-     * @param n
-     */
-    public Place(String pk, String n) {
-        super(pk, n);
-    }
+    String name;
+    String id;
+    
+    double lat;
+    double lon;
+   
     protected char name_type = 0;
 
     public void setName_type(char t) {
@@ -78,7 +77,31 @@ public class Place extends GeoBase implements Comparable<Object>, Serializable {
         return name_type;
     }
 
-    /**
+    public double getLat() {
+		return lat;
+	}
+
+	public void setLat(double lat) {
+		this.lat = lat;
+	}
+
+	public double getLon() {
+		return lon;
+	}
+
+	public void setLon(double lon) {
+		this.lon = lon;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	/**
      *
      */
     protected String country_id = null;
@@ -113,26 +136,14 @@ public class Place extends GeoBase implements Comparable<Object>, Serializable {
         this.featureCode = featureCode;
     }
 
-    /**
-     * Wrapper around GeoBase.setKey for compat
-     */
-    public final void setPlaceID(String id) {
-        setKey(id);
-    }
 
-    /**
-     * Wrapper around GeoBase.getKey for compat
-     */
-    public String getPlaceID() {
-        return getKey();
-    }
 
     public final void setPlaceName(String nm) {
-        setName(nm);
+        this.name=nm;
     }
 
     public final String getPlaceName() {
-        return getName();
+        return name;
     }
 
     public String getAdmin1() {
@@ -151,42 +162,23 @@ public class Place extends GeoBase implements Comparable<Object>, Serializable {
         admin2 = key;
     }
 
-    /**
-     */
-    public boolean isAbbreviation() {
-        return GeonamesUtility.isAbbreviation(name_type);
-    }
 
-    /**
-     * Is this Place a Country?
-     *
-     * @return - true if this is a country or "country-like" place
-     */
-    public boolean isCountry() {
-        return GeonamesUtility.isCountry(getFeatureCode());
-    }
 
-    /**
-     * Is this Place a State or Province?
-     *
-     * @return - true if this is a State, Province or other first level admin
-     * area
-     */
-    public boolean isAdmin1() {
-        return GeonamesUtility.isAdmin1(getFeatureCode());
-    }
 
-    /**
-     * Is this Place a National Capital?
-     *
-     * @return - true if this is a a national Capital area
-     */
-    public boolean isNationalCapital() {
-        return GeonamesUtility.isNationalCapital(getFeatureCode());
-    }
+
+
     // the a priori estimates
     private Double name_bias;
     private Double id_bias;
+	/** ISO 2-character country code */
+	public String CC_ISO2 = null;
+	/** ISO 3-character country code */
+	public String CC_ISO3 = null;
+	/** FIPS 10-4 2-character country code */
+	public String CC_FIPS = null;
+	/** Any list of country alias names. */
+	private Set<String> aliases = new HashSet<String>();
+	private Set<String> regions = new HashSet<String>();
 
     /**
      * The name bias is a measure of the a priori likelihood that a mention of
@@ -214,7 +206,7 @@ public class Place extends GeoBase implements Comparable<Object>, Serializable {
 
     @Override
     public String toString() {
-        return this.getName() + "(" + this.getAdmin1() + ","
+        return this.getPlaceName() + "(" + this.getAdmin1() + ","
                 + this.getCountryCode() + "," + this.getFeatureCode() + ")";
     }
 
@@ -227,6 +219,36 @@ public class Place extends GeoBase implements Comparable<Object>, Serializable {
             return 0;
         }
         Place tmp = (Place) other;
-        return this.getKey().compareTo(tmp.getKey());
+        return this.getId().compareTo(tmp.getId());
     }
+
+	/** Country is also known as some list of aliases
+	 * @param nm 
+	 */
+	public void addAlias(String nm) {
+	    aliases.add(nm);
+	}
+
+	/**
+	 *
+	 * @return
+	 */
+	public Set<String> getAliases() {
+	    return aliases;
+	}
+
+	/** Country is also known as some list of aliases
+	 * @param regionid 
+	*/
+	public void addRegion(String regionid) {
+	    regions.add(regionid);
+	}
+
+	/**
+	 *
+	 * @return
+	 */
+	public Set<String> getRegions() {
+	    return regions;
+	}
 }

@@ -30,10 +30,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.util.zip.ZipOutputStream;
 
+import org.mitre.opensextant.processing.ProcessingException;
 import org.opensextant.giscore.DocumentType;
 import org.opensextant.giscore.output.gdb.FileGdbOutputStream;
-
-import org.mitre.opensextant.processing.ProcessingException;
 
 /**
  * A results formatter for FileGDB output.

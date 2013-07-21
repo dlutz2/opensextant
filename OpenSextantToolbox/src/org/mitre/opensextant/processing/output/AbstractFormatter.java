@@ -28,15 +28,16 @@ package org.mitre.opensextant.processing.output;
 
 import gate.Corpus;
 import gate.Document;
+
 import java.io.File;
 import java.io.IOException;
+
 import org.apache.commons.io.FileUtils;
 import org.mitre.opensextant.processing.GeocodingResult;
 import org.mitre.opensextant.processing.Parameters;
 import org.mitre.opensextant.processing.ProcessingException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import java.text.DecimalFormat;
 
 
 /**

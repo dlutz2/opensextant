@@ -26,14 +26,15 @@
  */
 package org.mitre.opensextant.xtemporal;
 
-import org.mitre.opensextant.flexpat.*;
-
-import java.util.*;
 import java.io.IOException;
-
-import java.net.URL;
 import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 
+import org.mitre.opensextant.flexpat.PatternTestCase;
+import org.mitre.opensextant.flexpat.RegexPattern;
+import org.mitre.opensextant.flexpat.RegexPatternManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -3,7 +3,6 @@ package org.mitre.opensextant.processing.output;
 import java.io.File;
 
 import org.mitre.opensextant.processing.ProcessingException;
-import org.mitre.opensextant.processing.output.GISDataFormatter;
 import org.mitre.opensextant.processing.output.os.ExcelGISOutputStream;
 
 public class XLSFormatter extends GISDataFormatter {

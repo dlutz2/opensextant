@@ -28,9 +28,10 @@ package org.mitre.opensextant.processing.output;
 
 import java.io.File;
 import java.io.FileOutputStream;
+
+import org.mitre.opensextant.processing.ProcessingException;
 import org.opensextant.giscore.DocumentType;
 import org.opensextant.giscore.GISFactory;
-import org.mitre.opensextant.processing.ProcessingException;
 
 /**
  * A formatter for WKT outut.

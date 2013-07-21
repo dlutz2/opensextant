@@ -7,16 +7,13 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
+
 import org.mitre.opensextant.desktop.ui.table.OSRow;
 import org.mitre.opensextant.desktop.util.JobStatistics;
 import org.mitre.opensextant.processing.Geocoding;
-
 import org.mitre.opensextant.processing.GeocodingResult;
 import org.mitre.opensextant.processing.OpenSextantSchema;
 import org.mitre.opensextant.processing.ProcessingException;
-import org.mitre.opensextant.processing.output.AbstractFormatter;
-import static org.mitre.opensextant.processing.output.AbstractFormatter.log;
-import org.mitre.opensextant.processing.output.result.IdentifierResult;
 
 public class MultiFormatter extends AbstractFormatter {
 

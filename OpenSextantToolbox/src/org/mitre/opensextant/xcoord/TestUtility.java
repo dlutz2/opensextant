@@ -26,19 +26,21 @@
  */
 package org.mitre.opensextant.xcoord;
 
-import org.supercsv.io.CsvMapWriter;
-import org.supercsv.cellprocessor.ift.CellProcessor;
-import org.supercsv.cellprocessor.constraint.*;
-import org.supercsv.cellprocessor.*;
-import org.supercsv.prefs.CsvPreference;
-
-import java.io.*;
-import java.util.Map;
+import java.io.File;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.HashMap;
+import java.util.Map;
 
 import org.mitre.opensextant.flexpat.TextMatch;
 import org.mitre.opensextant.flexpat.TextMatchResultSet;
 import org.mitre.opensextant.util.FileUtility;
+import org.supercsv.cellprocessor.FmtBool;
+import org.supercsv.cellprocessor.Optional;
+import org.supercsv.cellprocessor.constraint.NotNull;
+import org.supercsv.cellprocessor.ift.CellProcessor;
+import org.supercsv.io.CsvMapWriter;
+import org.supercsv.prefs.CsvPreference;
 
 /**
  *

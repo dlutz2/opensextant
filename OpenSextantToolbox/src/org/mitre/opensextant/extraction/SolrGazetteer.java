@@ -33,6 +33,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import org.apache.commons.lang.StringUtils;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.response.QueryResponse;
@@ -41,11 +42,8 @@ import org.apache.solr.common.SolrDocumentList;
 import org.apache.solr.common.params.CommonParams;
 import org.apache.solr.common.params.ModifiableSolrParams;
 import org.mitre.opensextant.placedata.Place;
-import org.mitre.opensextant.data.Country;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import org.supercsv.io.CsvMapReader;
 import org.supercsv.prefs.CsvPreference;
 
@@ -68,7 +66,7 @@ public class SolrGazetteer {
      */
     private ModifiableSolrParams params = new ModifiableSolrParams();
     private SolrProxy solr = null;
-    private Map<String, Country> country_lookup = null;
+    private Map<String, Place> country_lookup = null;
     private Map<String, String> iso2fips = new HashMap<String, String>();
     private Map<String, String> fips2iso = new HashMap<String, String>();
     /**
@@ -182,10 +180,10 @@ public class SolrGazetteer {
     /**
      * List all country names, official and variant names.
      */
-    public Map<String, Country> getCountries() {
+    public Map<String, Place> getCountries() {
         return country_lookup;
     }
-    public final static Country UNK_Country = new Country("UNK", "invalid");
+    public final static Place UNK_Country = new Place("UNK", "invalid");
 
     /**
      * Get Country by the default ISO digraph returns the Unknown country if you
@@ -194,7 +192,7 @@ public class SolrGazetteer {
      * TODO: throw a GazetteerException of some sort. for null query or invalid
      * code.
      */
-    public Country getCountry(String isocode) {
+    public Place getCountry(String isocode) {
         if (isocode == null) {
             return null;
         }
@@ -207,7 +205,7 @@ public class SolrGazetteer {
     /**
      *
      */
-    public Country getCountryByFIPS(String fips) {
+    public Place getCountryByFIPS(String fips) {
         String isocode = fips2iso.get(fips);
         return getCountry(isocode);
     }
@@ -219,7 +217,7 @@ public class SolrGazetteer {
      * TODO: allow caller to get all entries, including abbreviations.
      */
     protected void loadCountries() throws SolrServerException {
-        country_lookup = new HashMap<String, Country>();
+        country_lookup = new HashMap<String, Place>();
 
         ModifiableSolrParams ctryparams = new ModifiableSolrParams();
         ctryparams.set(CommonParams.FL, "id,name,cc,FIPS_cc,ISO3_cc,adm1,adm2,feat_class,feat_code,geo,name_type");
@@ -239,13 +237,13 @@ public class SolrGazetteer {
 
             // NOTE: FIPS could be "*", where ISO2 column is always non-trivial. if ("*".equals(code)){code = fips; }
 
-            Country C = country_lookup.get(code);
+            Place C = country_lookup.get(code);
             if (C != null) {
                 C.addAlias(name); // all other metadata is same. 
                 continue;
             }
 
-            C = new Country(code, name);
+            C = new Place(code, name);
             C.setName_type(SolrProxy.getChar(gazEntry, "name_type"));
 
             // Geo field is specifically Spatial4J lat,lon format.
@@ -253,7 +251,7 @@ public class SolrGazetteer {
             C.setLatitude(xy[0]);
             C.setLongitude(xy[1]);
 
-            C.addAlias(C.getName()); // don't loose this entry as a likely variant.
+            C.addAlias(C.getPlaceName()); // don't loose this entry as a likely variant.
 
             country_lookup.put(code, C);
         }
@@ -261,12 +259,12 @@ public class SolrGazetteer {
         /**
          * Finally choose default official names given the map of name:iso2
          */
-        for (Country C : country_lookup.values()) {
+        for (Place C : country_lookup.values()) {
             String n = _default_country_names.get(C.getCountryCode());
             if (n != null) {
                 for (String alias : C.getAliases()) {
                     if (n.equalsIgnoreCase(alias.toLowerCase())) {
-                        C.setName(alias);
+                        C.setPlaceName(alias);
                     }
                 }
             }
@@ -347,9 +345,9 @@ public class SolrGazetteer {
         try {
 
             // Try to get countries
-            Map<String, Country> countries = gaz.getCountries();
-            for (Country c : countries.values()) {
-                System.out.println(c.getKey() + " = " + c.name + "\t  Aliases: " + c.getAliases().toString());
+            Map<String, Place> countries = gaz.getCountries();
+            for (Place c : countries.values()) {
+                System.out.println(c.getPlaceID() + " = " + c.getPlaceName() + "\t  Aliases: " + c.getAliases().toString());
             }
 
 

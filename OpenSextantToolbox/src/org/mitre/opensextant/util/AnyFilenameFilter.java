@@ -19,7 +19,8 @@
 
 package org.mitre.opensextant.util;
 
-import java.io.*;
+import java.io.File;
+import java.io.FilenameFilter;
 /**
  *
  * @author ubaldino

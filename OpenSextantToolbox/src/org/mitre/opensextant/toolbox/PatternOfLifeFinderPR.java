@@ -48,9 +48,6 @@ import org.mitre.opensextant.flexpat.TextMatch;
 import org.mitre.opensextant.poli.PatternsOfLife;
 import org.mitre.opensextant.poli.PoliException;
 import org.mitre.opensextant.poli.PoliMatch;
-import org.mitre.opensextant.poli.data.MACAddress;
-import org.mitre.opensextant.poli.data.Money;
-import org.mitre.opensextant.poli.data.TelephoneNumber;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

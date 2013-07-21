@@ -28,15 +28,18 @@
 package org.mitre.opensextant.poli;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.regex.Matcher;
-import java.io.IOException;
+
+import org.mitre.opensextant.flexpat.RegexPattern;
+import org.mitre.opensextant.flexpat.RegexPatternManager;
+import org.mitre.opensextant.flexpat.TextMatch;
+import org.mitre.opensextant.util.TextUtils;
+import org.mitre.opensextant.xcoord.XCoordException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import org.mitre.opensextant.flexpat.*;
-import org.mitre.opensextant.util.TextUtils;
 
 /**
  *

@@ -37,9 +37,13 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.mitre.opensextant.flexpat.*;
+import org.mitre.opensextant.flexpat.PatternTestCase;
+import org.mitre.opensextant.flexpat.RegexPattern;
+import org.mitre.opensextant.flexpat.RegexPatternManager;
 import org.mitre.opensextant.util.TextUtils;
-import org.opensextant.geodesy.*;
+import org.opensextant.geodesy.Geodetic2DPoint;
+import org.opensextant.geodesy.MGRS;
+import org.opensextant.geodesy.UTM;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

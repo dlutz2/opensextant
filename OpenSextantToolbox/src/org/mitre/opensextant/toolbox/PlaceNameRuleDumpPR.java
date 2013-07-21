@@ -14,7 +14,6 @@ package org.mitre.opensextant.toolbox;
 import gate.Annotation;
 import gate.AnnotationSet;
 import gate.Controller;
-import gate.Document;
 import gate.ProcessingResource;
 import gate.Resource;
 import gate.Utils;

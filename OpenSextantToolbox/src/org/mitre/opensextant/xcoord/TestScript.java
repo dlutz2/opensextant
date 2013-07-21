@@ -27,18 +27,21 @@ package org.mitre.opensextant.xcoord;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.apache.commons.io.FilenameUtils;
-import org.supercsv.io.CsvMapReader;
-import org.supercsv.prefs.CsvPreference;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
+import org.apache.commons.io.FilenameUtils;
 import org.mitre.opensextant.flexpat.PatternTestCase;
 import org.mitre.opensextant.flexpat.TextMatch;
 import org.mitre.opensextant.flexpat.TextMatchResultSet;
 import org.mitre.opensextant.util.FileUtility;
 import org.mitre.opensextant.util.TextUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.supercsv.io.CsvMapReader;
+import org.supercsv.prefs.CsvPreference;
 
 /**
  *

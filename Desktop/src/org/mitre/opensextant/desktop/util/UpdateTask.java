@@ -5,6 +5,7 @@
 package org.mitre.opensextant.desktop.util;
 
 import java.util.TimerTask;
+
 import org.mitre.opensextant.desktop.ui.helpers.MainFrameTableHelper;
 import org.mitre.opensextant.desktop.ui.table.OSRow;
 

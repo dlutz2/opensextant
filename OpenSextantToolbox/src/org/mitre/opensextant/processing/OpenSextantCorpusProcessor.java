@@ -31,14 +31,14 @@ import gate.CorpusController;
 import gate.Factory;
 
 import java.util.Date;
-import org.joda.time.format.DateTimeFormatter;
-import org.joda.time.format.DateTimeFormat;
+
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
-import org.mitre.opensextant.processing.output.*;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 import org.mitre.opensextant.extraction.ExtractionMetrics;
-
+import org.mitre.opensextant.processing.output.ResultsFormatter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

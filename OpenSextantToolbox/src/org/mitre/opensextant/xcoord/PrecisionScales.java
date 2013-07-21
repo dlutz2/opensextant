@@ -33,8 +33,6 @@ package org.mitre.opensextant.xcoord;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @author ubaldino
