@@ -6,6 +6,6 @@ The Open Spatial Extraction and Tagging (OpenSextant) software provides an unstr
 OpenSextant Toolbox
 =================
 
- The OpenSextant Toolbox is a GATE based geotagger. Based on the GATE open source text processing framework, 
+ The OpenSextant Toolbox is a GATE based geotagger. Based on the GATE open source text processing framework (http://gate.ac.uk), 
  the OpenSextant Toolbox adds a set of processing resources (plugins) which are then assembled to produce a full
  geotagging pipeline. It builds upon the OpenSextant Gazetteer and SolrTextTagger projects.
