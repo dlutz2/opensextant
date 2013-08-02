@@ -3,9 +3,21 @@
 	 <tstamp/>
 
 	<property name="version" value="1.0-${DSTAMP}"/>
+	<property name="prebuilt.gaz.loc" value="http://opensextant.org"/>
+	<property name="prebuilt.gaz.name" value="OpenSextant-Solr-v14-June2013.zip"/>
+	
+	<property name="gaz_basename" value="MergedGazetteer" />
 	
 	<target name="clean" depends="" />
 
+	<!-- fetch and unzip the prebuilt gazetteer data set from opensextant.org -->
+    <target name="fetch.prebuilt.gaz">
+       <echo > Retrieving prebuilt gazetteer from opensextant.org</echo>
+ 		<get src="${prebuilt.gaz.loc}/${prebuilt.gaz.name}" dest="${basedir}/resources/geoGazetteer" /> 
+		<unzip src="${basedir}/resources/geoGazetteer/${prebuilt.gaz.name}" dest="${basedir}/resources/geoGazetteer" />
+    </target>
+	
+	
 	<target name="build" depends="" >
 	</target>
 

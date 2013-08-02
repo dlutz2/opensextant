@@ -2,63 +2,43 @@
 <ivy-module version="2.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:noNamespaceSchemaLocation="http://ant.apache.org/ivy/schemas/ivy.xsd">
-	<info organisation="org.mitre.opensextant" module="GATE Test Driver"
-		status="test" />
+	<info organisation="org.mitre.opensextant" module="OpenSextant Toolbox" status="test" />
+
+
+	<configurations>
+		<conf name="GATE" description="Just the GATE stuff" />
+		<conf name="Plugin" description="Just the stuff for the plugin" />
+		<conf name="Solr" description="Just the stuff for the solr text tagger" />
+	</configurations>
 
 
 	<dependencies>
 
-		<dependency org="uk.ac.gate" name="gate-core" rev="7.1">
+		<dependency org="uk.ac.gate" name="gate-core" rev="7.1" conf ="GATE->*"/>
 
-		</dependency>
-
-		<dependency org="org.apache.solr" name="solr-core" rev="4.2.1">
-
-		</dependency>
-
-		<dependency org="com.vividsolutions" name="jts" rev="1.13">
-
-		</dependency>
-
-		<dependency org="joda-time" name="joda-time" rev="2.2">
-
-		</dependency>
-
-		<dependency org="org.opensextant" name="geodesy" rev="2.0.0">
-
-		</dependency>
-
-		<!--  dependency org="org.opensextant" name="solr-text-tagger" rev="1.1.1">
-
-		</dependency-->
+		<dependency org="org.opensextant" name="solr-text-tagger" rev="1.2-SNAPSHOT" conf ="Solr->*"/>
+		<dependency org="com.vividsolutions" name="jts" rev="1.13" conf ="Solr->*"/>
+		<dependency org="javax.servlet" name="javax.servlet-api" rev="3.0.1" conf ="Solr->*"/>
+            
 		
-		<dependency org="org.apache.tika" name="tika-parsers" rev="1.3"/>
+				
+		<dependency org="joda-time" name="joda-time" rev="2.2" conf ="Plugin->*" />
+		<dependency org="org.opensextant" name="geodesy" rev="2.0.0" conf ="Plugin->*"/>
+		<dependency org="net.sf.supercsv" name="super-csv" rev="2.1.0" conf ="Plugin->*"/>
+		<dependency org="commons-codec" name="commons-codec" rev="1.7" conf ="Plugin->*" />
+		<dependency org="commons-lang" name="commons-lang" rev="2.6" conf ="Plugin->*"/>
+        <dependency org="commons-io" name="commons-io" rev="2.4" conf ="Plugin->*"/>
+            
 		
-		<dependency org="org.opensextant" name="giscore" rev="2.0.0"/>
-            
-        <dependency org="net.sf.supercsv" name="super-csv" rev="2.0.0-beta-1"/>
-        
-         <!--dependency org="net.sf.json-lib" name="json-lib" rev="2.4"/-->
-            
-         <dependency org="org.mod4j.com.ibm" name="icu" rev="4.0.1"/>
-            
-	<!-- For Desktop -->
-		<!--  dependency org="org.mybatis" name="mybatis" rev="3.2.2"/-->
-        <!--  dependency org="org.xerial" name="sqlite-jdbc" rev="3.7.2"/-->
-        <!--  dependency org="org.jdesktop" name="appframework" rev="1.0.3"/-->
-        <!--  dependency org="commons-pool" name="commons-pool" rev="1.6"/-->
-                     
-
-
-
-
-	<exclude org="org.restlet.jee"/>
-	<exclude org="org.eclipse.jetty"/>
-	
-	<exclude artifact="lucene-analyzers-kuromoji" />
-	<exclude artifact="lucene-analyzers-morfologik" />
+		<exclude ext="txt" />
+		<exclude type="src" />
+		<exclude type="javadoc" ext="jar" />
+		<exclude type="source" ext="jar" />
+		<exclude org="org.restlet.jee" />
+		<!--exclude org="org.eclipse.jetty" /-->
+		<exclude artifact="!sources" />
+		<exclude artifact="lucene-analyzers-kuromoji" />
+		<exclude artifact="lucene-analyzers-morfologik" />
 	</dependencies>
-
-
 
 </ivy-module>

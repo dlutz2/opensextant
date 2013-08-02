@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<fileset-config file-format-version="1.2.0" simple-config="true" sync-formatter="false">
+  <local-check-config name="OpenSextant Config" location="C:\Users\dlutz\git2\opensextant\OpenSextantToolbox\checkstyle.xml" type="external" description="">
+    <property name="checkstyle.suppressions.file" value="checkstyle-suppressions.xml"/>
+    <property name="checkstyle.indentChars" value="2"/>
+    <additional-data name="protect-config-file" value="false"/>
+  </local-check-config>
+  <fileset name="all" enabled="true" check-config-name="OpenSextant Config" local="true">
+    <file-match-pattern match-pattern="." include-pattern="true"/>
+  </fileset>
+</fileset-config>
