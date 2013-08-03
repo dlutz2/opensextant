@@ -149,7 +149,7 @@
     <tt>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
       MyPattern pat = (MyPattern) repat;</tt><br>
     <tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      Matcher match = pat.regex.matcher(text);</tt><br>
+      PlacenameMatcher match = pat.regex.matcher(text);</tt><br>
     <tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       // This&nbsp; tracks for this result that at least one rule was
       evaluated on the data.</tt><br>

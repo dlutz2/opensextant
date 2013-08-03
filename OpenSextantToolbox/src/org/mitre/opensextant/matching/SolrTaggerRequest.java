@@ -24,7 +24,7 @@
  * **************************************************************************
  *
  */
-package org.mitre.opensextant.extraction;
+package org.mitre.opensextant.matching;
 import java.util.Collection;
 import java.util.Collections;
 import org.apache.solr.client.solrj.SolrRequest;
