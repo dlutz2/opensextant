@@ -20,22 +20,24 @@
  * **************************************************************************
  **/
 package org.mitre.opensextant.phonetic;
+
 import org.apache.commons.codec.EncoderException;
 import org.apache.commons.codec.StringEncoder;
+
 /**
  * An encoder that reduces all diacritics to the appropriate base character.
  */
 public class DiacriticEncoder implements StringEncoder {
-	@Override
-	public Object encode(Object obj) throws EncoderException {
-		if (!(obj instanceof String)) {
-			throw new EncoderException(
-					"Parameter supplied to DiacriticEncoder is not of type java.lang.String");
-		}
-		return encode((String) obj);
-	}
-	@Override
-	public String encode(String word) throws EncoderException {
-		return PhoneticUtils.removeDiacritics(word);
-	}
+  @Override
+  public Object encode(Object obj) throws EncoderException {
+    if (!(obj instanceof String)) {
+      throw new EncoderException("Parameter supplied to DiacriticEncoder is not of type java.lang.String");
+    }
+    return encode((String) obj);
+  }
+
+  @Override
+  public String encode(String word) throws EncoderException {
+    return PhoneticUtils.removeDiacritics(word);
+  }
 }

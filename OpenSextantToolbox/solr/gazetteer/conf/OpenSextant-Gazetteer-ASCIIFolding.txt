@@ -2,7 +2,7 @@
 # Contraction filtering
 #
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# Inserting a space before the English possessive and other contractions (and other accidental matches)
+# Inserting a space before the English possessive and other contractions
 # so they (including the apostrophe) becomes their own tokens.
 # so text like
 #

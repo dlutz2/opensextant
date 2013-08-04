@@ -25,52 +25,63 @@
  * **************************************************************************
  */
 package org.mitre.opensextant.regex.geo;
+
 import java.util.Map;
+
 import org.opensextant.geodesy.UTM;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
- *
+ * *
  * @author ubaldino
  */
 public class UTMParser {
-	/**
+  
+  
+  
+  // Log object
+  private static Logger log = LoggerFactory.getLogger(UTMParser.class);
+  /**
      *
      */
-	public static final char UTM_NORTH = 'N';
-	/**
+  public static final char UTM_NORTH = 'N';
+  /**
      *
      */
-	public static final char UTM_SOUTH = 'S';
-	/**
-	 *
-	 * @param text
-	 * @param elements
-	 * @return
-	 */
-	public static UTM parseUTM(String text, Map<String, String> elements) {
-		String z = elements.get("UTMZone");
-		String z1 = elements.get("UTMZoneZZ"); // 0-5\d
-		String z2 = elements.get("UTMZoneZ"); // \d
-		if (z == null) {
-			z = (z1 != null ? z1 : z2);
-		}
-		if (z == null) {
-			return null;
-		}
-		int ZZ = Integer.parseInt(z);
-		String b = elements.get("UTMBand");
-		if (b == null) {
-			return null;
-		}
-		// TODO: is 'n' valid for UTM band?
-		char h = b.charAt(0);
-		if (h != UTM_NORTH && h != UTM_SOUTH) {
-			h = UTM.getHemisphere(h);
-		}
-		String e = elements.get("UTMEasting");
-		String n = elements.get("UTMNorthing");
-		Integer E = Integer.parseInt(e);
-		Integer N = Integer.parseInt(n);
-		UTM utm = new UTM(ZZ, h, E.doubleValue(), N.doubleValue());
-		return utm;
-	}
+  public static final char UTM_SOUTH = 'S';
+
+  /**
+   *
+   * @param text
+   * @param elements
+   * @return
+   */
+  public static UTM parseUTM(String text, Map<String, String> elements) {
+    String z = elements.get("UTMZone");
+    String z1 = elements.get("UTMZoneZZ"); // 0-5\d
+    String z2 = elements.get("UTMZoneZ"); // \d
+    if (z == null) {
+      z = (z1 != null ? z1 : z2);
+    }
+    if (z == null) {
+      return null;
+    }
+    int ZZ = Integer.parseInt(z);
+    String b = elements.get("UTMBand");
+    if (b == null) {
+      return null;
+    }
+    // TODO: is 'n' valid for UTM band?
+    char h = b.charAt(0);
+    if (h != UTM_NORTH && h != UTM_SOUTH) {
+      h = UTM.getHemisphere(h);
+    }
+    String e = elements.get("UTMEasting");
+    String n = elements.get("UTMNorthing");
+    Integer E = Integer.parseInt(e);
+    Integer N = Integer.parseInt(n);
+    UTM utm = new UTM(ZZ, h, E.doubleValue(), N.doubleValue());
+    return utm;
+  }
 }

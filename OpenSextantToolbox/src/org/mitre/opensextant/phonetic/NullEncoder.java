@@ -20,22 +20,24 @@
  * **************************************************************************
  **/
 package org.mitre.opensextant.phonetic;
+
 import org.apache.commons.codec.EncoderException;
 import org.apache.commons.codec.StringEncoder;
+
 /**
  * An encoder that does nothing - just returns the input.
  */
 public class NullEncoder implements StringEncoder {
-	@Override
-	public Object encode(Object obj) throws EncoderException {
-		if (!(obj instanceof String)) {
-			throw new EncoderException(
-					"Parameter supplied to NullEncoder is not of type java.lang.String");
-		}
-		return encode((String) obj);
-	}
-	@Override
-	public String encode(String word) throws EncoderException {
-		return word;
-	}
+  @Override
+  public Object encode(Object obj) throws EncoderException {
+    if (!(obj instanceof String)) {
+      throw new EncoderException("Parameter supplied to NullEncoder is not of type java.lang.String");
+    }
+    return encode((String) obj);
+  }
+
+  @Override
+  public String encode(String word) throws EncoderException {
+    return word;
+  }
 }

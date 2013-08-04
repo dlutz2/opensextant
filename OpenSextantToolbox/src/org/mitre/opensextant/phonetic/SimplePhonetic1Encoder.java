@@ -20,8 +20,10 @@
  * **************************************************************************
  **/
 package org.mitre.opensextant.phonetic;
+
 import org.apache.commons.codec.EncoderException;
 import org.apache.commons.codec.StringEncoder;
+
 /**
  * A simple home brew encoder that:
  * <ol>
@@ -32,21 +34,20 @@ import org.apache.commons.codec.StringEncoder;
  * </ol>
  */
 public class SimplePhonetic1Encoder implements StringEncoder {
-	@Override
-	public Object encode(Object obj) throws EncoderException {
-		if (!(obj instanceof String)) {
-			throw new EncoderException(
-					"Parameter supplied to SimplePhonetic1Encoder is not of type java.lang.String");
-		}
-		return encode((String) obj);
-	}
-	@Override
-	public String encode(String word) throws EncoderException {
-		// remove the case, punct and diacritics
-		String tmp = PhoneticUtils.removeCase(PhoneticUtils
-				.removeDiacritics(PhoneticUtils.removePunctuation(word)));
-		// now replace all vowels with "a"
-		tmp = tmp.replaceAll("[aeiou]", "a");
-		return tmp;
-	}
+  @Override
+  public Object encode(Object obj) throws EncoderException {
+    if (!(obj instanceof String)) {
+      throw new EncoderException("Parameter supplied to SimplePhonetic1Encoder is not of type java.lang.String");
+    }
+    return encode((String) obj);
+  }
+
+  @Override
+  public String encode(String word) throws EncoderException {
+    // remove the case, punct and diacritics
+    String tmp = PhoneticUtils.removeCase(PhoneticUtils.removeDiacritics(PhoneticUtils.removePunctuation(word)));
+    // now replace all vowels with "a"
+    tmp = tmp.replaceAll("[aeiou]", "a");
+    return tmp;
+  }
 }

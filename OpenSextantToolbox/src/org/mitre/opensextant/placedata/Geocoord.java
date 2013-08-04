@@ -20,92 +20,100 @@
  * **************************************************************************
  **/
 package org.mitre.opensextant.placedata;
+
 /**
  * A Geocoord represents spatial coordinates on the globe.
  */
 public class Geocoord implements java.io.Serializable {
-	private static final long serialVersionUID = -3313528469542406371L;
-	// canonical form is decimal degree
-	Double latitude = null;
-	Double longitude = null;
-	// the phrase as found in the document
-	String expression = "";
-	public int precision = -1;
-	/**
-	 * Set to false if expression cannot be interpreted as meaningful lat/lon
-	 */
-	public boolean isValid = false;
-	// empty public constructor so this class be used like a Bean
-	public Geocoord() {
-		isValid = true;
-	}
-	public Geocoord(double lat, double lon) {
-		isValid = true;
-		setLatitude(lat);
-		setLongitude(lon);
-	}
-	// TODO We need a real distance method
-	/**
-	 * This returns distance in degrees. Only to be used for fast comparison of
-	 * relative distances from the same point.
-	 *
-	 * @return distance from the given latitude and longitude, in degrees.
-	 */
-	public Double distanceDeg(double lat, double lon) {
-		Double d = Double.MAX_VALUE;
-		if (isValid) {
-			d = Math.sqrt(Math.pow((this.latitude - lat), 2.0)
-					+ Math.pow((this.longitude - lon), 2.0));
-		} else {
-			// System.err.println("Null in Geocoord" + this.expression);
-		}
-		return d;
-	}
-	/**
-	 * This returns distance in degrees. Only to be used for fast comparison of
-	 * relative distances from the same point.
-	 *
-	 * @return distance from the given Geocoord, in degrees.
-	 */
-	public Double distanceDeg(Geocoord another) {
-		Double d = Double.MAX_VALUE;
-		if (isValid && another != null) {
-			d = Math.sqrt(Math.pow((this.latitude - another.getLatitude()), 2.0)
-					+ Math.pow((this.longitude - another.getLongitude()), 2.0));
-		} else {
-			// System.err.println("Null in Geocoord" + this.expression);
-		}
-		return d;
-	}
-	public Double getLatitude() {
-		return latitude;
-	}
-	public void setLatitude(Double latitude) {
-		this.latitude = latitude;
-	}
-	public Double getLongitude() {
-		return longitude;
-	}
-	public void setLongitude(Double longitude) {
-		this.longitude = longitude;
-	}
-	/**
-	 * If the coordinates were extracted from an explicit text mention, such as
-	 * a latitude-longitude pair or Military Grid Reference number, this returns
-	 * the text mention from which the spatial coordinates were derived.
-	 *
-	 */
-	public String getExpression() {
-		return expression;
-	}
-	public void setExpression(String expression) {
-		this.expression = expression;
-	}
-	@Override
-	public String toString() {
-		if (isValid) {
-			return "(" + this.latitude + "," + this.longitude + ")";
-		}
-		return "(NULL)";
-	}
+  private static final long serialVersionUID = -3313528469542406371L;
+  // canonical form is decimal degree
+  Double latitude = null;
+  Double longitude = null;
+  // the phrase as found in the document
+  String expression = "";
+  public int precision = -1;
+  /**
+   * Set to false if expression cannot be interpreted as meaningful lat/lon
+   */
+  public boolean isValid = false;
+
+  // empty public constructor so this class be used like a Bean
+  public Geocoord() {
+    isValid = true;
+  }
+
+  public Geocoord(double lat, double lon) {
+    isValid = true;
+    setLatitude(lat);
+    setLongitude(lon);
+  }
+
+  // TODO We need a real distance method
+  /**
+   * This returns distance in degrees. Only to be used for fast comparison of relative distances from the same point.
+   *
+   * @return distance from the given latitude and longitude, in degrees.
+   */
+  public Double distanceDeg(double lat, double lon) {
+    Double d = Double.MAX_VALUE;
+    if (isValid) {
+      d = Math.sqrt(Math.pow((this.latitude - lat), 2.0) + Math.pow((this.longitude - lon), 2.0));
+    } else {
+      // System.err.println("Null in Geocoord" + this.expression);
+    }
+    return d;
+  }
+
+  /**
+   * This returns distance in degrees. Only to be used for fast comparison of relative distances from the same point.
+   *
+   * @return distance from the given Geocoord, in degrees.
+   */
+  public Double distanceDeg(Geocoord another) {
+    Double d = Double.MAX_VALUE;
+    if (isValid && another != null) {
+      d = Math.sqrt(Math.pow((this.latitude - another.getLatitude()), 2.0)
+          + Math.pow((this.longitude - another.getLongitude()), 2.0));
+    } else {
+      // System.err.println("Null in Geocoord" + this.expression);
+    }
+    return d;
+  }
+
+  public Double getLatitude() {
+    return latitude;
+  }
+
+  public void setLatitude(Double latitude) {
+    this.latitude = latitude;
+  }
+
+  public Double getLongitude() {
+    return longitude;
+  }
+
+  public void setLongitude(Double longitude) {
+    this.longitude = longitude;
+  }
+
+  /**
+   * If the coordinates were extracted from an explicit text mention, such as a latitude-longitude pair or Military Grid
+   * Reference number, this returns the text mention from which the spatial coordinates were derived.
+   *
+   */
+  public String getExpression() {
+    return expression;
+  }
+
+  public void setExpression(String expression) {
+    this.expression = expression;
+  }
+
+  @Override
+  public String toString() {
+    if (isValid) {
+      return "(" + this.latitude + "," + this.longitude + ")";
+    }
+    return "(NULL)";
+  }
 }

@@ -20,36 +20,42 @@
  * **************************************************************************
  **/
 package org.mitre.opensextant.placedata;
+
 /**
- * A class to hold a Place and a score together. Used by PlaceCandidate to rank
- * places.
+ * A class to hold a Place and a score together. Used by PlaceCandidate to rank places.
  */
 public class ScoredPlace implements Comparable<Object> {
-	Place place;
-	Double score;
-	public Place getPlace() {
-		return place;
-	}
-	public void setPlace(Place place) {
-		this.place = place;
-	}
-	public Double getScore() {
-		return score;
-	}
-	public void setScore(Double score) {
-		this.score = score;
-	}
-	public ScoredPlace(Place pl, Double scr) {
-		this.place = pl;
-		this.score = scr;
-	}
-	@Override
-	// compare by score
-	public int compareTo(Object o) {
-		if (o instanceof ScoredPlace) {
-			return -1 * this.getScore().compareTo(((ScoredPlace) o).getScore());
-		} else {
-			return 0;
-		}
-	}
+  Place place;
+  Double score;
+
+  public Place getPlace() {
+    return place;
+  }
+
+  public void setPlace(Place place) {
+    this.place = place;
+  }
+
+  public Double getScore() {
+    return score;
+  }
+
+  public void setScore(Double score) {
+    this.score = score;
+  }
+
+  public ScoredPlace(Place pl, Double scr) {
+    this.place = pl;
+    this.score = scr;
+  }
+
+  @Override
+  // compare by score
+  public int compareTo(Object o) {
+    if (o instanceof ScoredPlace) {
+      return -1 * this.getScore().compareTo(((ScoredPlace) o).getScore());
+    } else {
+      return 0;
+    }
+  }
 }

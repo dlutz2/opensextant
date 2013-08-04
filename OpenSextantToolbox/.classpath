@@ -4,49 +4,19 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="lib/GATE/gate-core.jar"/>
 	<classpathentry kind="lib" path="lib/Plugin/annotations.jar"/>
+	<classpathentry kind="lib" path="lib/Plugin/commons-codec.jar"/>
+	<classpathentry kind="lib" path="lib/Plugin/commons-io.jar"/>
+	<classpathentry kind="lib" path="lib/Plugin/commons-lang.jar"/>
 	<classpathentry kind="lib" path="lib/Plugin/geodesy.jar"/>
 	<classpathentry kind="lib" path="lib/Plugin/joda-convert.jar"/>
 	<classpathentry kind="lib" path="lib/Plugin/joda-time.jar"/>
 	<classpathentry kind="lib" path="lib/Plugin/slf4j-api.jar"/>
 	<classpathentry kind="lib" path="lib/Plugin/slf4j-simple.jar"/>
 	<classpathentry kind="lib" path="lib/Plugin/super-csv.jar"/>
-	<classpathentry kind="lib" path="externals/JITAR.jar"/>
-	<classpathentry kind="lib" path="lib/Plugin/commons-codec.jar"/>
 	<classpathentry kind="lib" path="lib/Solr/solr-core.jar"/>
 	<classpathentry kind="lib" path="lib/Solr/solr-solrj.jar"/>
-	<classpathentry kind="lib" path="lib/Solr/guava.jar"/>
 	<classpathentry kind="lib" path="lib/Solr/solr-text-tagger.jar"/>
-	<classpathentry kind="lib" path="lib/Plugin/commons-io.jar"/>
-	<classpathentry kind="lib" path="lib/Plugin/commons-lang.jar"/>
-	<classpathentry kind="lib" path="lib/Solr/commons-cli.jar"/>
-	<classpathentry kind="lib" path="lib/Solr/commons-codec.jar"/>
-	<classpathentry kind="lib" path="lib/Solr/commons-fileupload.jar"/>
-	<classpathentry kind="lib" path="lib/Solr/commons-io.jar"/>
-	<classpathentry kind="lib" path="lib/Solr/commons-lang.jar"/>
-	<classpathentry kind="lib" path="lib/Solr/httpclient.jar"/>
-	<classpathentry kind="lib" path="lib/Solr/httpcore.jar"/>
-	<classpathentry kind="lib" path="lib/Solr/httpmime.jar"/>
-	<classpathentry kind="lib" path="lib/Solr/javax.servlet-api.jar"/>
-	<classpathentry kind="lib" path="lib/Solr/jcl-over-slf4j.jar"/>
-	<classpathentry kind="lib" path="lib/Solr/jts.jar"/>
-	<classpathentry kind="lib" path="lib/Solr/logback-classic.jar"/>
-	<classpathentry kind="lib" path="lib/Solr/logback-core.jar"/>
-	<classpathentry kind="lib" path="lib/Solr/lucene-analyzers-common.jar"/>
-	<classpathentry kind="lib" path="lib/Solr/lucene-analyzers-phonetic.jar"/>
-	<classpathentry kind="lib" path="lib/Solr/lucene-codecs.jar"/>
-	<classpathentry kind="lib" path="lib/Solr/lucene-core.jar"/>
-	<classpathentry kind="lib" path="lib/Solr/lucene-grouping.jar"/>
-	<classpathentry kind="lib" path="lib/Solr/lucene-highlighter.jar"/>
-	<classpathentry kind="lib" path="lib/Solr/lucene-memory.jar"/>
-	<classpathentry kind="lib" path="lib/Solr/lucene-misc.jar"/>
-	<classpathentry kind="lib" path="lib/Solr/lucene-queries.jar"/>
-	<classpathentry kind="lib" path="lib/Solr/lucene-queryparser.jar"/>
-	<classpathentry kind="lib" path="lib/Solr/lucene-spatial.jar"/>
-	<classpathentry kind="lib" path="lib/Solr/lucene-suggest.jar"/>
-	<classpathentry kind="lib" path="lib/Solr/noggit.jar"/>
-	<classpathentry kind="lib" path="lib/Solr/slf4j-api.jar"/>
-	<classpathentry kind="lib" path="lib/Solr/spatial4j.jar"/>
-	<classpathentry kind="lib" path="lib/Solr/wstx-asl.jar"/>
-	<classpathentry kind="lib" path="lib/Solr/zookeeper.jar"/>
+	<classpathentry kind="lib" path="lib/GATE/commons-codec.jar"/>
+	<classpathentry kind="lib" path="lib/JITAR.jar"/>
 	<classpathentry kind="output" path="classes"/>
 </classpath>

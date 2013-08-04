@@ -49,6 +49,3 @@ The Solr Home directory typically contains the following subdirectories...
         syntax in solrconfig.xml to direct Solr to your plugins.  See the
         example solrconfig.xml file for details.
 
-   bin/
-        This directory is optional.  It is the default location used for
-        keeping the replication scripts.

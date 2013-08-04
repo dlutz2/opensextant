@@ -25,34 +25,36 @@
  * **************************************************************************
  */
 package org.mitre.opensextant.regex.geo;
+
 /**
- *
+ * *
  * @author ubaldino
  */
 public class Hemisphere {
-	//
-	/**
+  //
+  /**
      *
      */
-	public String symbol = null;
-	// unset polarity means you have a bug.
-	// Default = 1 should be set by interpreter.
-	/**
+  public String symbol = null;
+  // unset polarity means you have a bug.
+  // Default = 1 should be set by interpreter.
+  /**
      *
      */
-	public int polarity = 0;
-	/**
-	 *
-	 * @return
-	 */
-	public boolean isAlpha() {
-		if (symbol == null) {
-			return false;
-		}
-		if (symbol.isEmpty()) {
-			return false;
-		}
-		// Java 7: isAlphabetic()
-		return Character.isLetter(symbol.charAt(0));
-	}
+  public int polarity = 0;
+
+  /**
+   *
+   * @return
+   */
+  public boolean isAlpha() {
+    if (symbol == null) {
+      return false;
+    }
+    if (symbol.isEmpty()) {
+      return false;
+    }
+    // Java 7: isAlphabetic()
+    return Character.isLetter(symbol.charAt(0));
+  }
 }

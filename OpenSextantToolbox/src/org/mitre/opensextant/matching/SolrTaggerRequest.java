@@ -25,28 +25,31 @@
  *
  */
 package org.mitre.opensextant.matching;
+
 import java.util.Collection;
 import java.util.Collections;
+
 import org.apache.solr.client.solrj.SolrRequest;
 import org.apache.solr.client.solrj.request.QueryRequest;
 import org.apache.solr.common.params.SolrParams;
 import org.apache.solr.common.util.ContentStream;
 import org.apache.solr.common.util.ContentStreamBase;
+
 /**
- *
+ * *
  * @author dsmiley
  * @author ubaldino
  */
 @SuppressWarnings("serial")
 public class SolrTaggerRequest extends QueryRequest {
-	public String input = null;
-	public SolrTaggerRequest(SolrParams p, SolrRequest.METHOD m) {
-		super(p, m);
-	}
-	@Override
-	public Collection<ContentStream> getContentStreams() {
-		return Collections
-				.singleton((ContentStream) new ContentStreamBase.StringStream(
-						input));
-	}
+  public String input = null;
+
+  public SolrTaggerRequest(SolrParams p, SolrRequest.METHOD m) {
+    super(p, m);
+  }
+
+  @Override
+  public Collection<ContentStream> getContentStreams() {
+    return Collections.singleton((ContentStream) new ContentStreamBase.StringStream(input));
+  }
 }

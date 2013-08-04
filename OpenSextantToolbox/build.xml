@@ -107,11 +107,6 @@ Build file for OpenSextantToolbox.
 		<jar destfile="${jar.location}" update="false" basedir="${build.dir}">
 			<include name="org/mitre/opensextant/**" />
 		</jar>
-		<jar destfile="${jar.location}" update="true" basedir="${gaz.home}/GazetteerETL/Resources">
-			<include name="country-names-2013.csv" />
-			<include name="feature-metadata-2013.csv" />
-		</jar>
-
 	</target>
 
 	<!-- create JavaDoc directory -->
