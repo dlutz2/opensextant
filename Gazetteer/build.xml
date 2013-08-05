@@ -60,7 +60,7 @@
         	<!-- NGA changed file naming convention in 2013 -->
 			<!-- property name="NGA_basename_2012" value="geonames_dd_dms_date_${NGA_date}" /-->
 			<property name="NGA_basename" value="geonames_${NGA_date}" />
-        	<!-- alternate path to the same data but way slower -->
+        	<!-- alternate ftp path to the same data but way, way slower, Don't use unless desperate-->
 			<!--get src="ftp://ftp.nga.mil/pub2/gns_data/${NGA_basename}.zip" dest="${basedir}/GazetteerETL/GeoData/NGA" /--> 
 			<get src="http://earth-info.nga.mil/gns/html/${NGA_basename}.zip" dest="${basedir}/GazetteerETL/GeoData/NGA" />
 			<unzip src="${basedir}/GazetteerETL/GeoData/NGA/${NGA_basename}.zip" dest="${basedir}/GazetteerETL/GeoData/NGA" />
