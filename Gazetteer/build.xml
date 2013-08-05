@@ -49,7 +49,7 @@
 	<!-- copy these to Kettles libext dir -->
     <target name="copy-libs" >
 	    <copy todir="${kettle.home}/libext" file="${basedir}/GazetteerETL/lib/opensextant-phonetics.jar" />
-        <copy todir="${kettle.home}/libext" file="${basedir}/GazetteerETL/lib/commons-codec-1.7.jar" />
+        <copy todir="${kettle.home}/libext" file="${basedir}/GazetteerETL/lib/commons-codec.jar" />
     </target>
 
 	<!-- Fetch original source gazetteers from their various websites, unzip and rename (removing date from file name) -->
@@ -60,9 +60,9 @@
         	<!-- NGA changed file naming convention in 2013 -->
 			<!-- property name="NGA_basename_2012" value="geonames_dd_dms_date_${NGA_date}" /-->
 			<property name="NGA_basename" value="geonames_${NGA_date}" />
-        	<!-- alternate path to the same data -->
-			<!-- <get src="http://earth-info.nga.mil/gns/html/${NGA_basename}.zip" dest="${basedir}/GazetteerETL/GeoData/NGA" /> -->
-			<get src="ftp://ftp.nga.mil/pub2/gns_data/${NGA_basename}.zip" dest="${basedir}/GazetteerETL/GeoData/NGA" /> 
+        	<!-- alternate path to the same data but way slower -->
+			<!--get src="ftp://ftp.nga.mil/pub2/gns_data/${NGA_basename}.zip" dest="${basedir}/GazetteerETL/GeoData/NGA" /--> 
+			<get src="http://earth-info.nga.mil/gns/html/${NGA_basename}.zip" dest="${basedir}/GazetteerETL/GeoData/NGA" />
 			<unzip src="${basedir}/GazetteerETL/GeoData/NGA/${NGA_basename}.zip" dest="${basedir}/GazetteerETL/GeoData/NGA" />
 			<move file="${basedir}/GazetteerETL/GeoData/NGA/${NGA_basename}.txt" tofile="${basedir}/GazetteerETL/GeoData/NGA/geonames_dd_dms_date.txt" />
         </target>
