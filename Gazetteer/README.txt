@@ -31,9 +31,9 @@
  
  GazetteerETL 
  	BuildMergedGazetteer.kjb - the Kettle Job that does everything, it runs the Transformations below.
- 	NGA to Universal.ktr - Kettle Transformation that cleans and transforms the NGA gazeteer data into GeoData/Merged/NGA.txt
- 	USGS to Universal.ktr - Kettle Transformation that cleans and transforms the USGS gazeteer data into GeoData/Merged/USGS.txt
- 	AdHoc to Universal.ktr - Kettle Transformation that cleans and transforms the user defined gazeteer data into GeoData/Merged/AdHoc.txt
+ 	NGA to Universal.ktr - Kettle Transformation that cleans and transforms the NGA gazetteer data into GeoData/Merged/NGA.txt
+ 	USGS to Universal.ktr - Kettle Transformation that cleans and transforms the USGS gazetteer data into GeoData/Merged/USGS.txt
+ 	AdHoc to Universal.ktr - Kettle Transformation that cleans and transforms the user defined gazetteer data into GeoData/Merged/AdHoc.txt
  	EstimateBiases.ktr - Kettle Transformation that merges results of above three Transformations and adds some needed statistical measures to each gazetteer record.
  
  	GeoData - input (raw) gazetteer data
