@@ -46,7 +46,7 @@
     </target>
 	
 	<!-- copies of required jars, included in lib dir -->
-	<!-- copy these to Kettles libext dir -->
+	<!-- copy these to Kettle's libext dir -->
     <target name="copy-libs" >
 	    <copy todir="${kettle.home}/libext" file="${basedir}/GazetteerETL/lib/opensextant-phonetics.jar" />
         <copy todir="${kettle.home}/libext" file="${basedir}/GazetteerETL/lib/commons-codec.jar" />
@@ -98,7 +98,7 @@
 	
 
 	<!-- run the overall Gazetteer cleaning/transformation process in Kettle -->
-	<!-- this produces the Merged.txt gazetteer file which contains the cleaned and merged gazetteer
+	<!-- this produces the MergedGazetteer.txt gazetteer file which contains the cleaned and merged gazetteer
 		data ready to be ingested into the Solr gazetteer -->
 	
 	<!-- win flavor of kettle call -->

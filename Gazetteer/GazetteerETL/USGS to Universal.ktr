@@ -1210,8 +1210,8 @@
 
 
 	// create the key by concating name,country_code,type, latitude and longitude
-	String keyString = name + "-" + cc +"-" + type +"-" + lat +"-" + lon;
-	//String keyString = baseName + "-" + cc +"-" + type +"-" + lat +"-" + lon;
+	//String keyString = name + "-" + cc +"-" + type +"-" + lat +"-" + lon;
+	String keyString = baseName + "-" + cc +"-" + type +"-" + lat +"-" + lon;
 
 	int key = keyString.hashCode();
 

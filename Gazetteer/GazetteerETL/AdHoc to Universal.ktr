@@ -704,8 +704,8 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
 
 
 	// create the key by concating name,country_code,type, latitude and longitude
-	String keyString = name + "-" + cc +"-" + type +"-" + lat +"-" + lon;
-	//String keyString = baseName + "-" + cc +"-" + type +"-" + lat +"-" + lon;
+	//String keyString = name + "-" + cc +"-" + type +"-" + lat +"-" + lon;
+	String keyString = baseName + "-" + cc +"-" + type +"-" + lat +"-" + lon;
 
 	Long key = ((Integer)keyString.hashCode()).longValue();
 
