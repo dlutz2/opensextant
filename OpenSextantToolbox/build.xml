@@ -39,8 +39,9 @@ Build file for OpenSextantToolbox.
 	<property name="gaz.home" location="../Gazetteer" />
 
 
-	<!-- location for the generated JAR file -->
+	<!-- location for the generated JAR files -->
 	<property name="jar.location" location="${build.dir}/${project.name}.jar" />
+	<property name="jar.location.phonetics" location="${build.dir}/opensextant-phonetics.jar" />
 
 	<!-- location of the license file -->
 	<property name="license.location" location="../LICENSE.txt" />
@@ -103,10 +104,15 @@ Build file for OpenSextantToolbox.
 
 	<!-- create the JAR files -->
 	<target name="jar" depends="compile">
-
 		<jar destfile="${jar.location}" update="false" basedir="${build.dir}">
-			<include name="org/mitre/opensextant/**" />
+			<include name="org/opensextant/**" />
 		</jar>
+		
+		<jar destfile="${jar.location.phonetics}" update="false" basedir="${build.dir}">
+			<include name="org/opensextant/phonetic/**" />
+		</jar>
+		
+		
 	</target>
 
 	<!-- create JavaDoc directory -->
