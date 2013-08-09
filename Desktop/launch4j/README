@@ -1,3 +1,0 @@
-Launch4j configuration, right now the path's are hardcoded to my machine.  
-Need to mess with seeing if I can make it relative and get the build process
-to generate the executable.
