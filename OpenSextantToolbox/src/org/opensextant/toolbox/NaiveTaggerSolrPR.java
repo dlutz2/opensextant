@@ -76,7 +76,12 @@ public class NaiveTaggerSolrPR extends AbstractLanguageAnalyser implements Proce
   @Override
   public Resource init() throws ResourceInstantiationException {
     super.init();
+    
     matcher = MatcherFactory.getMatcher();
+    if(matcher == null){
+      log.error("Could not get a matcher from MatcherFactory. Not configured?");
+      return this;
+    }
     matcher.tagAbbreviations(tagAbbreviations);
     return this;
   }

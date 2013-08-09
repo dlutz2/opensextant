@@ -96,6 +96,11 @@ Build file for OpenSextantToolbox.
 		<ivy:retrieve pattern="${ivy.lib.dir}/[conf]/[artifact].[ext]" />
 	</target>
 
+	<!-- get the one jar which is not resolved via Ivy -->
+	<target name="copyOrphan" depends="">
+		<copy todir="${lib.dir}\Plugin" file="${lib.externals.dir}\JITAR.jar" />
+	</target>
+	
 
 	<!-- compile the source  -->
 	<target name="compile" depends="setup">

@@ -23,20 +23,24 @@ public class MatcherFactory {
 
   private static String envParam = "solr.home";
 
-  // config params
+  // string specifying solr home, could be file path or URL
   private static String homeLocation;
 
+  // states of solr server and thus the MatcherFactory
   private static boolean isRemote = false;
   private static boolean isConfigured = false;
   private static boolean isStarted = false;
 
+  // the solr server which is the heart of the MatcherFactory
   private static SolrServer solrServer = null;
 
+  // all of the Matchers the Factory has created
+  // weak references so they can be GC'ed when
   static Map<PlacenameMatcher, Boolean> matchers = new WeakHashMap<PlacenameMatcher, Boolean>();
 
   // Log object
   private static Logger log = LoggerFactory.getLogger(MatcherFactory.class);
-  
+
   public static void config(String home) {
 
     if (isStarted) {
@@ -44,6 +48,7 @@ public class MatcherFactory {
       return;
     }
 
+    // not running but already configured
     if (isConfigured) {
       // re-configuring
       isRemote = false;
@@ -85,7 +90,8 @@ public class MatcherFactory {
       try {
         tmpURL = new URL(home);
       } catch (MalformedURLException e) {
-        // how could this happen we just said it was valid
+        // how could this happen we just checked it was valid
+        log.error("Malformed URL in initializing MatcherFactory:" + tmpURL);
         return;
       }
 
@@ -124,6 +130,8 @@ public class MatcherFactory {
       if (isRemote) {
         HttpSolrServer server = new HttpSolrServer(homeLocation);
         server.setAllowCompression(true);
+        // test to see if it is really working?
+        // server.ping();
         solrServer = server;
         isStarted = true;
       } else {
@@ -132,18 +140,20 @@ public class MatcherFactory {
           CoreContainer solrContainer = new CoreContainer(homeLocation);
           solrContainer.load(homeLocation, solr_xml);
           EmbeddedSolrServer server = new NoSerializeEmbeddedSolrServer(solrContainer, "");
+          // test to see if it is really working?
+          // server.ping();
           solrServer = server;
           isStarted = true;
         } catch (FileNotFoundException e) {
-          // TODO Auto-generated catch block
-          e.printStackTrace();
+          // this should never happen since we check before calling
+          log.error("Could not find solr home when initializing MatcherFactory:" + homeLocation);
         }
 
       }
 
     } else {
       // can't start not configured
-
+      log.error("Could not start MatcherFactory, it hasnt been configured yet");
     }
 
   }
@@ -151,25 +161,43 @@ public class MatcherFactory {
   public static PlacenameMatcher getMatcher() {
 
     // if started/configed etc
+    if (isConfigured) {
 
-    // if configed but not started, start?
+      if (isStarted) {
+        PlacenameMatcher tmp = new PlacenameMatcher(solrServer);
+        matchers.put(tmp, true);
+        return tmp;
+      } else {
+        // configured but not started
+        start();
+        log.debug("Autostarting MatcherFactory");
+        PlacenameMatcher tmp = new PlacenameMatcher(solrServer);
+        matchers.put(tmp, true);
+        return tmp;
+      }
+    } else {
+      // not configured
+      // try default config
+      log.debug("Trying to defult config and autostarting Matcher Factory");
+      config("");
+      if (isConfigured) {
+        log.debug("Default config worked. Try to start");
+        start();
+        PlacenameMatcher tmp = new PlacenameMatcher(solrServer);
+        matchers.put(tmp, true);
+        return tmp;
+      } else {
+        log.error("MatcherFactory not configured and default config did'nt work");
+        return null;
+      }
 
-    // if not configed error;
-
-    PlacenameMatcher tmp = new PlacenameMatcher(solrServer);
-
-    matchers.put(tmp, true);
-
-    return tmp;
+    }
 
   }
 
   static void shutdown(PlacenameMatcher m) {
-    isStarted = false;
     matchers.remove(m);
-    if (solrServer != null && matchers.isEmpty()) {
-      solrServer.shutdown();
-    }
+    MatcherFactory.shutdown(false);
   }
 
   public static void shutdown(boolean force) {
@@ -191,9 +219,11 @@ public class MatcherFactory {
   private static boolean validURL(String url) {
 
     URL solrURL = null;
+
     try {
       solrURL = new URL(url);
-    } catch (Exception e) {
+    } catch (MalformedURLException e) {
+      // eat the exception and return not valid
       return false;
     }
 
@@ -231,6 +261,14 @@ public class MatcherFactory {
 
   }
 
+  public static boolean isConfigured() {
+    return isConfigured;
+  }
+
+  public static boolean isStarted() {
+    return isStarted;
+  }
+
   /**
    * Get an integer from a record
    */
@@ -261,7 +299,7 @@ public class MatcherFactory {
 
   /**
    * Get a Date object from a record
-   *
+   * 
    * @throws java.text.ParseException
    */
   public static Date getDate(SolrDocument d, String f) throws java.text.ParseException {
@@ -306,7 +344,7 @@ public class MatcherFactory {
   }
 
   /**
-   *
+   * 
    * Get a double from a record
    */
   public static double getDouble(SolrDocument solrDoc, String name) {
@@ -324,7 +362,7 @@ public class MatcherFactory {
 
   /**
    * Parse XY pair stored in Solr Spatial4J record. No validation is done.
-   *
+   * 
    * @return XY double array, [lat, lon]
    */
   public static double[] getCoordinate(SolrDocument solrDoc, String field) {
@@ -341,7 +379,7 @@ public class MatcherFactory {
 
   /**
    * Parse XY pair stored in Solr Spatial4J record. No validation is done.
-   *
+   * 
    * @return XY double array, [lat, lon]
    */
   public static double[] getCoordinate(String xy) {
@@ -354,7 +392,7 @@ public class MatcherFactory {
 
   /**
    * Create a Place object from a Solr document
-   *
+   * 
    * @return Place
    */
   public static Place createPlace(SolrDocument gazEntry) {
@@ -366,12 +404,18 @@ public class MatcherFactory {
     // NOTE: this may be different than "matchtext" or PlaceCandidate.name
     // field.
     //
-    place.setCountryCode(getString(gazEntry, "cc"));
+    String cc = getString(gazEntry, "cc");
+    cc = cc.intern();
+    place.setCountryCode(cc);
     // Other metadata.
     place.setAdmin1(getString(gazEntry, "adm1"));
     place.setAdmin2(getString(gazEntry, "adm2"));
-    place.setFeatureClass(getString(gazEntry, "feat_class"));
-    place.setFeatureCode(getString(gazEntry, "feat_code"));
+    String fClass = getString(gazEntry, "feat_class");
+    fClass = fClass.intern();
+    place.setFeatureClass(fClass);
+    String fCode = getString(gazEntry, "feat_code");
+    fCode = fCode.intern();
+    place.setFeatureCode(fCode);
     // Geo field is specifically Spatial4J lat,lon format.
     // Note -- Spatial4J ParseUtils offers a full validation of the parsing.
     // But since we validate on entry into the gazetteer, we need not pay

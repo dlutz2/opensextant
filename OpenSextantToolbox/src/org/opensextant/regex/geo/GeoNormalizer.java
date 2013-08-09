@@ -10,12 +10,13 @@ import org.opensextant.geodesy.Geodetic2DPoint;
 import org.opensextant.geodesy.MGRS;
 import org.opensextant.geodesy.UTM;
 import org.opensextant.placedata.Geocoord;
-import org.opensextant.regex.Normalize;
+import org.opensextant.regex.Normalizer;
+import org.opensextant.regex.RegexAnnotation;
 import org.opensextant.regex.RegexRule;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class GeoNormalizer implements Normalize {
+public class GeoNormalizer implements Normalizer {
   
   // Log object
   private static Logger log = LoggerFactory.getLogger(GeoNormalizer.class);
@@ -23,8 +24,9 @@ public class GeoNormalizer implements Normalize {
   
   
   @Override
-  public Map<String, Object> normalize(RegexRule r, MatchResult matchResult) {
-    Map<String, Object> normalizedResults = new HashMap<String, Object>();
+  public void normalize(RegexAnnotation anno, RegexRule r, MatchResult matchResult) {
+    
+    Map<String, Object> annoFeatures = anno.getFeatures();
     Map<String, String> elementsFound = new HashMap<String, String>();
     int numGroups = matchResult.groupCount();
     for (int i = 0; i < numGroups + 1; i++) {
@@ -35,10 +37,14 @@ public class GeoNormalizer implements Normalize {
       elementsFound.put(elemName, elemenValue);
     }
     String textMatch = matchResult.group(0);
-    normalizedResults.put("hierarchy", "Geo.place.geocoordinate");
-    normalizedResults.put("isEntity", true);
+
+    annoFeatures.put("hierarchy", "Geo.place.geocoordinate");
+    annoFeatures.put("isEntity", true);
+    
     // the rule family will tell us the set of elements to expect
     String family = r.getRuleFamily();
+    String ruleName = r.getRuleName();
+    
     // there are 5 geocoord families
     String DD_family = "DD";
     String DM_family = "DM";
@@ -51,7 +57,9 @@ public class GeoNormalizer implements Normalize {
       ddlat = new DMSOrdinate(elementsFound, true, textMatch);
       ddlon = new DMSOrdinate(elementsFound, false, textMatch);
       Geocoord geo = new Geocoord(ddlat.getValue(), ddlon.getValue());
-      normalizedResults.put("geo", geo);
+      annoFeatures.put("geo", geo);
+      annoFeatures.put("geoFamily", family);
+      annoFeatures.put("geoPattern", ruleName);
     }
     if (family.equals(DM_family)) {
       DMSOrdinate dmlat;
@@ -59,7 +67,9 @@ public class GeoNormalizer implements Normalize {
       dmlat = new DMSOrdinate(elementsFound, true, textMatch);
       dmlon = new DMSOrdinate(elementsFound, false, textMatch);
       Geocoord geo = new Geocoord(dmlat.getValue(), dmlon.getValue());
-      normalizedResults.put("geo", geo);
+      annoFeatures.put("geo", geo);
+      annoFeatures.put("geoFamily", family);
+      annoFeatures.put("geoPattern", ruleName);
     }
     if (family.equals(DMS_family)) {
       DMSOrdinate dmslat;
@@ -67,7 +77,9 @@ public class GeoNormalizer implements Normalize {
       dmslat = new DMSOrdinate(elementsFound, true, textMatch);
       dmslon = new DMSOrdinate(elementsFound, false, textMatch);
       Geocoord geo = new Geocoord(dmslat.getValue(), dmslon.getValue());
-      normalizedResults.put("geo", geo);
+      annoFeatures.put("geo", geo);
+      annoFeatures.put("geoFamily", family);
+      annoFeatures.put("geoPattern", ruleName);
     }
     if (family.equals(MGRS_family)) {
       List<MGRS> mgrs_candidates = MGRSParser.parseMGRS(textMatch, textMatch, elementsFound);
@@ -75,7 +87,9 @@ public class GeoNormalizer implements Normalize {
         MGRS mgrs = mgrs_candidates.get(0);
         Geodetic2DPoint pt = mgrs.toGeodetic2DPoint();
         Geocoord geo = new Geocoord(pt.getLatitudeAsDegrees(), pt.getLongitudeAsDegrees());
-        normalizedResults.put("geo", geo);
+        annoFeatures.put("geo", geo);
+        annoFeatures.put("geoFamily", family);
+        annoFeatures.put("geoPattern", ruleName);
         List<Geocoord> altCoords = new ArrayList<Geocoord>();
         if (mgrs_candidates.size() > 1) {
           for (MGRS m : mgrs_candidates) {
@@ -83,7 +97,7 @@ public class GeoNormalizer implements Normalize {
             Geocoord geo2 = new Geocoord(pt2.getLatitudeAsDegrees(), pt2.getLongitudeAsDegrees());
             altCoords.add(geo2);
           }
-          normalizedResults.put("geoAlternatives", geo);
+          annoFeatures.put("geoAlternatives", altCoords);
         }
       }
     }
@@ -92,9 +106,11 @@ public class GeoNormalizer implements Normalize {
       if (utm != null) {
         Geodetic2DPoint pt = utm.getGeodetic();
         Geocoord geo = new Geocoord(pt.getLatitudeAsDegrees(), pt.getLongitudeAsDegrees());
-        normalizedResults.put("geo", geo);
+        annoFeatures.put("geo", geo);
+        annoFeatures.put("geoFamily", family);
+        annoFeatures.put("geoPattern", ruleName);
       }
     }
-    return normalizedResults;
+    return ;
   }
 }

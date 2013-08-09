@@ -82,7 +82,6 @@ public class Place implements Comparable<Object>, Serializable {
    */
   public boolean isCountry() {
     return featureCode.startsWith("PCL");
-    /** matches("PCL.*") actually invokes a new Regex */
   }
 
   /**

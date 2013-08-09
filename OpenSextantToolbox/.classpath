@@ -17,6 +17,6 @@
 	<classpathentry kind="lib" path="lib/Solr/solr-solrj.jar"/>
 	<classpathentry kind="lib" path="lib/Solr/solr-text-tagger.jar"/>
 	<classpathentry kind="lib" path="lib/GATE/commons-codec.jar"/>
-	<classpathentry kind="lib" path="lib/JITAR.jar"/>
+	<classpathentry kind="lib" path="lib/Plugin/JITAR.jar"/>
 	<classpathentry kind="output" path="classes"/>
 </classpath>

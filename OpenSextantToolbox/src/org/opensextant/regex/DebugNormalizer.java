@@ -1,30 +1,34 @@
 package org.opensextant.regex;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.MatchResult;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class DebugNormalizer implements Normalize {
-  
+public class DebugNormalizer implements Normalizer {
+
   // Log object
   private static Logger log = LoggerFactory.getLogger(DebugNormalizer.class);
   @Override
-  public Map<String, Object> normalize(RegexRule r, MatchResult matchResult) {
-    Map<String, Object> elementsFound = new HashMap<String, Object>();
+  public void normalize(RegexAnnotation anno, RegexRule r, MatchResult matchResult) {
+
+    Map<String, Object> annoFeatures = anno.getFeatures();
+
     int numGroups = matchResult.groupCount();
+
     for (int i = 0; i < numGroups + 1; i++) {
+      // Future: create sub-annotations?
       // int s = matchResult.start(i);
       // int e = matchResult.end(i);
+      
       String elemenValue = matchResult.group(i);
       String elemName = r.getElementMap().get(i);
-      elementsFound.put(elemName, elemenValue);
+      annoFeatures.put(elemName, elemenValue);
     }
-    elementsFound.put("entityType", r.getEntityType());
-    elementsFound.put("ruleFamily", r.getRuleFamily());
-    elementsFound.put("ruleName", r.getRuleName());
-    return elementsFound;
+
+    anno.getFeatures().put("entityType", r.getEntityType());
+    anno.getFeatures().put("ruleFamily", r.getRuleFamily());
+    anno.getFeatures().put("ruleName", r.getRuleName());
   }
 }

@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -25,9 +24,11 @@ public class RegexMatcher {
   List<RegexRule> rules = new ArrayList<RegexRule>();
   // the list of entity type this matcher can find
   Set<String> types = new HashSet<String>();
+  
   // future stuff: named groups useful?
   // String namedGroup = "\\(\\?<([a-zA-Z][a-zA-Z0-9]*)>";
   // Pattern namedGroupPattern = Pattern.compile(namedGroup);
+  
   // the pattern of a DEFINE within a RULE e.g "<somePiece>"
   // NOTE: should we look for existing (not DEFINEDd) capture groups
   String elementRegex = "<[a-zA-Z0-9_]+>";
@@ -49,17 +50,24 @@ public class RegexMatcher {
     ArrayList<RegexAnnotation> matches = new ArrayList<RegexAnnotation>();
     for (RegexRule r : rules) {
       String t = r.getEntityType();
-      Normalize normer = r.getNormalizer();
+      Normalizer normer = r.getNormalizer();
       // Do the matching, looping over the rules
       Matcher matcher = r.getPattern().matcher(input);
       while (matcher.find()) {
+        // for each hit from the regex, create a RegexAnnotation
         RegexAnnotation tmp = new RegexAnnotation(t, matcher.group(0), matcher.start(), matcher.end());
+        // add the "hierarchy" feature
         tmp.getFeatures().put("hierarchy", r.getTaxo());
+        
+        // if the a normalizer has been specified, 
         if (normer != null) {
-          Map<String, Object> elems = normer.normalize(r, matcher.toMatchResult());
-          tmp.getFeatures().putAll(elems);
+          normer.normalize(tmp, r, matcher.toMatchResult());
         }
-        matches.add(tmp);
+        
+        // check to see if the normalizer declared the match invalid
+        if(tmp.isValid()){
+         matches.add(tmp);
+        }
       }
     }
     return matches;
@@ -178,9 +186,9 @@ public class RegexMatcher {
       // resolve and attach the normalizer object
       if (normalizerClassnames.containsKey(r.getEntityType())) {
         String normClassName = normalizerClassnames.get(r.getEntityType());
-        Normalize normer;
+        Normalizer normer;
         try {
-          normer = (Normalize) Class.forName(normClassName).newInstance();
+          normer = (Normalizer) Class.forName(normClassName).newInstance();
         } catch (InstantiationException e) {
           normer = new NoOpNormalizer();
           // log.error("Cannot instantiate a " + normClassName)
@@ -194,7 +202,7 @@ public class RegexMatcher {
         } catch (java.lang.ClassCastException e) {
           normer = new NoOpNormalizer();
           // log.error("Class " + normClassName +
-          // " does not implement Normalize")
+          // " does not implement Normalizer")
         }
         r.setNormalizer(normer);
       } else { // nothing in file use NoOpNormalzer

@@ -16,6 +16,10 @@ public class MatcherTest {
 
     PlacenameMatcher m = MatcherFactory.getMatcher();
 
+    if(m == null){
+      System.err.println("Got a null matcher from Factory.");
+    }
+    
     // List<Place> places = m.search("London");
     // for (Place p : places) {
     // System.out.println(p);

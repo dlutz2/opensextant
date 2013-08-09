@@ -1,13 +1,10 @@
 package org.opensextant.regex;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.regex.MatchResult;
 
-public class NoOpNormalizer implements Normalize {
+public class NoOpNormalizer implements Normalizer {
   @Override
-  public Map<String, Object> normalize(RegexRule r, MatchResult matchResult) {
-    Map<String, Object> elementsFound = new HashMap<String, Object>();
-    return elementsFound;
+  public void normalize(RegexAnnotation anno, RegexRule r, MatchResult matchResult) {
+      return;
   }
 }

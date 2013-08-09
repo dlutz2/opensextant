@@ -12,7 +12,7 @@ public class RegexRule {
   private String modifedPatternString;
   private String taxo;
   private Pattern pattern;
-  private Normalize normalizer;
+  private Normalizer normalizer;
   private Map<Integer, String> elementMap = new HashMap<Integer, String>();
 
   public String getEntityType() {
@@ -63,11 +63,11 @@ public class RegexRule {
     this.pattern = pattern;
   }
 
-  public Normalize getNormalizer() {
+  public Normalizer getNormalizer() {
     return normalizer;
   }
 
-  public void setNormalizer(Normalize normalizer) {
+  public void setNormalizer(Normalizer normalizer) {
     this.normalizer = normalizer;
   }
 

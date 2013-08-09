@@ -420,7 +420,7 @@ public final class DMSOrdinate {
   }
 
   /**
-   * Normalize a hemisphere pattern: +, -, NSEW, which may either be preceeding coordinate or after it. As well, it may
+   * Normalizer a hemisphere pattern: +, -, NSEW, which may either be preceeding coordinate or after it. As well, it may
    * be optional, so lack of a hemisphere may match to null. In which case, -- NO_HEMISPHERE -- caller should assume
    * POSITIVE hemisphere is implied. further filtering by caller is warranted.
    *

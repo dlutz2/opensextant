@@ -1,7 +1,5 @@
 package org.opensextant.regex.time;
 
-import java.text.ParseException;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.MatchResult;
@@ -10,61 +8,58 @@ import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
-import org.opensextant.regex.Normalize;
+import org.opensextant.regex.Normalizer;
+import org.opensextant.regex.RegexAnnotation;
 import org.opensextant.regex.RegexRule;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class DateTimeNormalizer implements Normalize {
+public class DateTimeNormalizer implements Normalizer {
+
+  // Enum representing YEAR, MON, WEEK, DAY, HR, MIN
+  //
+  
+  /**
+   * A simplistic way to capture resolution of the date/time reference.
+   */
+  public enum TimeResolution {
+    NONE(-1, "U"), YEAR(1, "Y"), MONTH(2, "M"), WEEK(3, "W"), DAY(4, "D"), HOUR(5, "H"), MINUTE(6, "m"), SECOND(7, "s");
+    public int level = -1;
+    public String code = null;
+
+    TimeResolution(int l, String c) {
+      level = l;
+      code = c;
+    }
+  };
+  
+  public TimeResolution resolution = TimeResolution.NONE;
+
   static final DateTime cal = DateTime.now(DateTimeZone.UTC);
   static final int YEAR = cal.getYear();
   static final int MILLENIUM = 2000;
   static final int CURRENT_YY = YEAR - MILLENIUM;;
   static final int FUTURE_YY_THRESHOLD = CURRENT_YY + 2;
   static final int MAXIMUM_YEAR = 2020;
+
   // Use of year "15" would imply 1915 in this case.
   // Adjust 2-digit year threshold as needed.
   // Java default is 80/20. 2000 - 2032 is the assumed year for "00" through
   // "32"
   // "33" is 1933
   //
-  /**
-     *
-   */
+
   public static int INVALID_DATE = -1;
-  /**
-     *
-     */
-  public static int NO_YEAR = -1;
-  /**
-     *
-     */
-  public static int NO_MONTH = -1;
-  /**
-     *
-     */
-  public static int NO_DAY = -1;
+
   static final DateTimeFormatter fmt_month = DateTimeFormat.forPattern("MMM").withZoneUTC();
-  static final DateTimeFormatter fmt_mm = DateTimeFormat.forPattern("MM").withZoneUTC();
-  static final DateTimeFormatter fmt_ydm = DateTimeFormat.forPattern("yyyy-MM-dd").withZoneUTC();
+
 
   // Log object
   private static Logger log = LoggerFactory.getLogger(DateTimeNormalizer.class);
-  
-  
-  
-  
-  /**
-   * @param d
-   * @return
-   */
-  public static String format_date(Date d) {
-    return fmt_ydm.print(d.getTime());
-  }
 
   @Override
-  public Map<String, Object> normalize(RegexRule r, MatchResult matchResult) {
-    Map<String, Object> normalizedResults = new HashMap<String, Object>();
+  public void normalize(RegexAnnotation anno, RegexRule r, MatchResult matchResult) {
+    Map<String, Object> normalizedResults = anno.getFeatures();;
     Map<String, String> elementsFound = new HashMap<String, String>();
     int numGroups = matchResult.groupCount();
     for (int i = 0; i < numGroups + 1; i++) {
@@ -75,46 +70,49 @@ public class DateTimeNormalizer implements Normalize {
       elementsFound.put(elemName, elemenValue);
     }
     // String textMatch = matchResult.group(0);
+
     // Parse years.
     int year = normalize_year(elementsFound);
     if (year == INVALID_DATE) {
-      return normalizedResults;
+      anno.setValid(false);
+      return;
     }
+
     if (year > MAXIMUM_YEAR) {
       // HHMM can look like a year, e.g., 2100h or 2300 PM
-      return normalizedResults;
+      anno.setValid(false);
+      return;
     }
+
     // dt.resolution = DateMatch.TimeResolution.YEAR;
     int month = 0;
-    try {
-      month = normalize_month(elementsFound);
-    } catch (ParseException e) {
-      e.printStackTrace();
+    month = normalize_month(elementsFound);
+
+    if (month == INVALID_DATE) {
+      month = normalize_month_name(elementsFound);
     }
     if (month == INVALID_DATE) {
-      try {
-        month = normalize_month_name(elementsFound);
-      } catch (ParseException e) {
-        e.printStackTrace();
-      }
+      anno.setValid(false);
+      return;
     }
-    if (month == INVALID_DATE) {
-      return normalizedResults;
-    }
+
     DateTime _cal = new DateTime(year, month, 1, 0, 0, DateTimeZone.UTC);
+
     // dt.resolution = DateMatch.TimeResolution.MONTH;
     int dom = normalize_day(elementsFound);
+
     // If you got this far, then assume Day of Month is 1 (first of the
     // month)
     if (dom == INVALID_DATE) {
       // No date found, resolution is month
       dom = 1;
     } else if (dom == 0) {
-      return normalizedResults;
+      anno.setValid(false);
+      return;
     } else {
       // dt.resolution = DateMatch.TimeResolution.DAY;
     }
-    // Normalize Time fields found, H, M, s.SSS, etc.
+    // Normalizer Time fields found, H, M, s.SSS, etc.
     //
     _cal = _cal.withDayOfMonth(dom);
     // For normal M/D/Y patterns, set the default time to noon, UTC
@@ -157,7 +155,7 @@ public class DateTimeNormalizer implements Normalize {
     normalizedResults.put("hierarchy", "Time.date");
     normalizedResults.put("isEntity", true);
     normalizedResults.put("date", _cal);
-    return normalizedResults;
+    return;
   }
 
   /**
@@ -182,7 +180,7 @@ public class DateTimeNormalizer implements Normalize {
   }
 
   /**
-   *
+   * 
    * Given a field hh, mm, or ss, get field from map and normalize/validate the value
    */
   public static int normalize_time(java.util.Map<String, String> elements, String tmField) {
@@ -213,7 +211,7 @@ public class DateTimeNormalizer implements Normalize {
   }
 
   /**
-   *
+   * 
    * @param elements
    * @return
    */
@@ -222,7 +220,7 @@ public class DateTimeNormalizer implements Normalize {
     // YY yy
     // YEARYY yy or yyyy
     String _YEAR = elements.get("YEAR");
-   // boolean _is_4digit = false;
+    // boolean _is_4digit = false;
     boolean _is_year = false;
     if (_YEAR != null) {
       // year = yy;
@@ -242,7 +240,7 @@ public class DateTimeNormalizer implements Normalize {
         _YEARYY = _YEARYY.substring(1);
       }
       if (_YEARYY.length() == 4) {
-      //  _is_4digit = true;
+        // _is_4digit = true;
         _is_year = true;
       } else if (_YEARYY.length() == 2) {
         // Special case: 00 yields 2000
@@ -288,12 +286,12 @@ public class DateTimeNormalizer implements Normalize {
   }
 
   /**
-   *
+   * 
    * @param elements
    * @return
    * @throws java.text.ParseException
    */
-  public static int normalize_month(java.util.Map<String, String> elements) throws java.text.ParseException {
+  public static int normalize_month(java.util.Map<String, String> elements) {
     // MM, MONTH -- numeric 01-12
     // MON_ABBREV, MON_NAME -- text
     //
@@ -312,12 +310,12 @@ public class DateTimeNormalizer implements Normalize {
   }
 
   /**
-   *
+   * 
    * @param elements
    * @return
    * @throws java.text.ParseException
    */
-  public static int normalize_month_name(java.util.Map<String, String> elements) throws java.text.ParseException {
+  public static int normalize_month_name(java.util.Map<String, String> elements) {
     // MM, MONTH -- numeric 01-12
     // MON_ABBREV, MON_NAME -- text
     //
@@ -336,16 +334,13 @@ public class DateTimeNormalizer implements Normalize {
     if (text.length() < 3 || text.length() > 10) {
       return INVALID_DATE;
     }
-    // TODO: Standardize on month trigraph, e.g. ,DEC can get DECEMBER or
-    // DECIEMBRE
-    // False positivies: "market 19" is not "mar 19" or "march 19"
-    //
-    DateTime mon = fmt_month.parseDateTime(text /* .substring(0, 3) */);
+
+    DateTime mon = fmt_month.parseDateTime(text);
     return mon.getMonthOfYear();
   }
 
   /**
-   *
+   * 
    * @param elements
    * @return
    */
@@ -370,7 +365,7 @@ public class DateTimeNormalizer implements Normalize {
   }
 
   /**
-   *
+   * 
    * @param val
    * @return
    */
@@ -379,27 +374,12 @@ public class DateTimeNormalizer implements Normalize {
       try {
         return Integer.parseInt(val);
       } catch (Exception parse_err) {
-        //
+        return INVALID_DATE;
       }
     }
     return INVALID_DATE;
   }
 
-  /**
-   * A simplistic way to capture resolution of the date/time reference.
-   */
-  public enum TimeResolution {
-    NONE(-1, "U"), YEAR(1, "Y"), MONTH(2, "M"), WEEK(3, "W"), DAY(4, "D"), HOUR(5, "H"), MINUTE(6, "m"), SECOND(7, "s");
-    public int level = -1;
-    public String code = null;
 
-    TimeResolution(int l, String c) {
-      level = l;
-      code = c;
-    }
-  };
 
-  // Enum representing YEAR, MON, WEEK, DAY, HR, MIN
-  //
-  public TimeResolution resolution = TimeResolution.NONE;
 }
